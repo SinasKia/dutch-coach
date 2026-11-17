@@ -1,0 +1,182 @@
+{
+"format": "dutch-coach-pack", "formatVersion": 1, "id": "core-speaking", "version": "1.0.0",
+"title": "Gesprekken, rollenspellen en missies (A2–B2)",
+"description": "Vertakkende rollenspellen, vrije spreekopdrachten, B2-discussies en opdrachten voor de echte wereld.",
+"scenarios": [
+{"id":"s-cafe","title":"Bestellen in een café","type":"roleplay","cefr":"A2","stage":1,"role":"ober","tags":["modal"],
+ "setting":"Je staat aan de bar van een café. De ober kijkt je aan.","settingFa":"کنار پیشخوان یک کافه ایستاده‌ای. گارسون به تو نگاه می‌کند.","start":"start",
+ "nodes":{
+  "start":{"say":"Goedemiddag! Zeg het maar.","hints":["Doe maar een …","Mag ik een … ?"],"model":"Hoi. Doe maar een koffie en een broodje kaas.","expect":[{"any":["koffie","thee","cappuccino","latte","espresso","cola","water","sap","bier","wijn","broodje","taart","tosti","chocolademelk"],"next":"n2"}],"fallback":"Sorry? Wilt u iets drinken of iets eten?","next":"n2"},
+  "n2":{"say":"Prima. Wilt u er iets bij? We hebben vandaag verse appeltaart.","twist":{"say":"O, sorry, dat is helaas net op. Ik heb nog wel verse muntthee of een cappuccino. Wat wilt u in plaats daarvan?"},"hints":["Ja, lekker.","Nee, dank u. Dat was het."],"model":"Ja, lekker. Doe maar een stuk appeltaart.","next":"n3"},
+  "n3":{"say":"Is het voor hier of om mee te nemen?","model":"Voor hier, graag.","expect":[{"any":["hier","meenemen","mee te nemen","mee nemen"],"next":"n4"}],"fallback":"Blijft u hier zitten, of neemt u het mee?","next":"n4"},
+  "n4":{"say":"Dat is dan zeven euro vijftig. Wilt u pinnen?","twist":{"say":"Dat is dan zeven euro vijftig. O nee, het pinapparaat doet het niet. Heeft u misschien contant geld bij u?"},"hints":["Ja, graag.","Kan ik ook contant betalen?"],"model":"Ja, ik wil graag pinnen.","next":"n5"},
+  "n5":{"say":"Dank u wel. Ik breng het zo naar uw tafel. Fijne dag nog!","end":true}}},
+
+{"id":"s-buren","title":"Kennismaken met de buurman","type":"roleplay","cefr":"A2","stage":1,"role":"buurman","tags":["mainorder","perfect"],
+ "setting":"Je bent net verhuisd. Voor de deur kom je je nieuwe buurman tegen.","settingFa":"تازه اسباب‌کشی کرده‌ای. جلوی در با همسایه‌ی جدیدت روبه‌رو می‌شوی.","start":"start",
+ "nodes":{
+  "start":{"say":"Hé, hallo! Ben jij de nieuwe buur? Ik ben Henk, van hiernaast.","open":true,"minWords":4,"hints":["Hoi Henk, ik ben …","Leuk je te ontmoeten."],"model":"Hoi Henk, ik ben [je naam]. Ik woon hier sinds vorige week. Leuk je te ontmoeten.","next":"n2"},
+  "n2":{"say":"Leuk! Waar kom je vandaan, als ik vragen mag?","model":"Ik kom uit Iran, maar ik woon al een tijdje in Nederland.","expect":[{"any":["iran","kom uit","vandaan","teheran","uit"],"next":"n3"}],"fallback":"Ik bedoel: uit welk land kom je?","next":"n3"},
+  "n3":{"say":"Wat interessant. En hoe bevalt het hier in de buurt?","open":true,"minWords":6,"hints":["Het bevalt me goed, want …","Ik moet nog wennen aan …"],"model":"Het bevalt me goed. Het is hier rustig en de mensen zijn aardig.","next":"n4"},
+  "n4":{"say":"Fijn om te horen. Zeg, we hebben zaterdag een buurtborrel. Heb je zin om te komen?","twist":{"say":"Fijn om te horen. Zeg, zaterdag is er een buurtborrel en iedereen neemt iets te eten mee. Kom je ook, en wat zou jij kunnen meenemen?"},"model":"Ja, gezellig! Hoe laat begint het?","expect":[{"any":["ja","graag","leuk","gezellig","ik kom","zin"],"next":"n5"},{"any":["nee","helaas","kan niet","sorry","jammer"],"next":"n5b"}],"fallback":"Kom je ook, zaterdag?","next":"n5"},
+  "n5":{"say":"Gezellig! Het begint om vijf uur, bij ons in de tuin. Tot zaterdag!","end":true},
+  "n5b":{"say":"Ach, jammer. Een andere keer dan. Tot ziens!","end":true}}},
+
+{"id":"s-afspraak","title":"Een afspraak maken (telefoon)","type":"roleplay","cefr":"A2","stage":1,"role":"assistente","tags":["modal","inversion"],
+ "setting":"Je belt de tandarts. Je hebt pijn aan een kies en wilt een afspraak.","settingFa":"به دندان‌پزشکی زنگ می‌زنی. دندانت درد می‌کند و وقت می‌خواهی.","start":"start",
+ "nodes":{
+  "start":{"say":"Tandartspraktijk Centrum, goedemorgen.","hints":["Ik wil graag een afspraak maken.","Ik bel omdat …"],"model":"Goedemorgen, ik wil graag een afspraak maken.","expect":[{"any":["afspraak","controle","langskomen","kies","pijn"],"next":"n2"}],"fallback":"Waarmee kan ik u helpen? Wilt u een afspraak maken?","next":"n2"},
+  "n2":{"say":"Is het voor een controle, of heeft u klachten?","model":"Ik heb sinds een paar dagen pijn aan een kies.","expect":[{"any":["controle","pijn","klacht","last","kies","tand"],"next":"n3"}],"fallback":"Heeft u pijn, of wilt u alleen een controle?","next":"n3"},
+  "n3":{"say":"Oké. Kunt u donderdag om half drie?","twist":{"say":"Oké. De eerste mogelijkheid is helaas pas over drie weken. Is dat een probleem voor u?"},"model":"Donderdag kan ik helaas niet. Kan het ook op vrijdag?","expect":[{"any":["ja","prima","goed","dat kan","is goed"],"next":"n5"},{"any":["nee","niet","helaas","andere","ander","liever","eerder","probleem"],"next":"n4"}],"next":"n5"},
+  "n4":{"say":"Ik begrijp het. Welke dag komt u het beste uit?","open":true,"minWords":3,"model":"Ik kan op vrijdag, het liefst in de ochtend.","next":"n5"},
+  "n5":{"say":"Dat kan. Mag ik uw naam en uw geboortedatum?","open":true,"minWords":3,"next":"n6"},
+  "n6":{"say":"Dank u, het staat genoteerd. Tot dan!","end":true}}},
+
+{"id":"s-huisarts","title":"Bij de huisarts","type":"roleplay","cefr":"B1","stage":2,"role":"huisarts","tags":["perfect","subclause"],
+ "setting":"Je zit bij de huisarts. Je slaapt al weken slecht en hebt vaak hoofdpijn.","settingFa":"نزد پزشک خانواده هستی. چند هفته است بد می‌خوابی و اغلب سردرد داری.","start":"start",
+ "nodes":{
+  "start":{"say":"Goedemiddag, komt u binnen. Vertelt u het eens: wat is er aan de hand?","open":true,"minWords":8,"hints":["Ik heb sinds … last van …","Het begon toen …"],"model":"Ik heb sinds een paar weken last van hoofdpijn en ik slaap heel slecht.","next":"n2"},
+  "n2":{"say":"Hoe lang heeft u deze klachten al precies?","model":"Ongeveer drie weken. Het is begonnen na mijn verhuizing.","expect":[{"any":["dag","dagen","week","weken","maand","maanden","sinds","gisteren","lang"],"next":"n3"}],"fallback":"Sinds wanneer heeft u er last van?","next":"n3"},
+  "n3":{"say":"En wordt het erger op bepaalde momenten, bijvoorbeeld ’s avonds of op het werk?","open":true,"minWords":6,"model":"Ja, vooral ’s avonds, als ik de hele dag achter de computer heb gezeten.","next":"n4"},
+  "n4":{"say":"Gebruikt u op dit moment medicijnen?","twist":{"say":"Ik wil u voor de zekerheid doorverwijzen naar het ziekenhuis voor een onderzoek. Hoe vindt u dat?"},"model":"Nee, alleen af en toe een paracetamol.","next":"n5"},
+  "n5":{"say":"Goed. Ik denk dat het met stress te maken heeft. Probeer het deze weken wat rustiger aan te doen. Als het over twee weken niet beter is, komt u dan terug. Heeft u nog vragen?","open":true,"minWords":4,"hints":["Mag ik nog iets vragen?","Kan ik gewoon blijven werken?"],"model":"Ja, kan ik in de tussentijd gewoon blijven werken?","next":"n6"},
+  "n6":{"say":"Goede vraag. In principe wel, maar luister goed naar uw lichaam. Beterschap!","end":true}}},
+
+{"id":"s-klantenservice","title":"De klantenservice bellen","type":"roleplay","cefr":"B1","stage":2,"role":"medewerker","tags":["subclause","prepositions"],
+ "setting":"Je energierekening is deze maand € 80 hoger dan normaal. Je belt de klantenservice.","settingFa":"قبض انرژی این ماه ۸۰ یورو بیشتر از معمول است. به خدمات مشتریان زنگ می‌زنی.","start":"start",
+ "nodes":{
+  "start":{"say":"Goedemiddag, klantenservice EnergieDirect. Waarmee kan ik u helpen?","open":true,"minWords":8,"hints":["Ik bel omdat …","Er klopt iets niet met …"],"model":"Goedemiddag. Ik bel omdat mijn rekening deze maand veel hoger is dan normaal.","next":"n2"},
+  "n2":{"say":"Wat vervelend. Mag ik uw postcode en huisnummer?","open":true,"minWords":2,"next":"n3"},
+  "n3":{"say":"Dank u. Ik zie dat uw maandbedrag is verhoogd na de jaarafrekening. Heeft u daar een brief over gekregen?","twist":{"say":"Dank u. Hm, ik kan uw gegevens niet vinden. Kunt u uw achternaam voor mij spellen, en heeft u een brief van ons gekregen over uw maandbedrag?"},"model":"Nee, ik heb daar niets over gekregen.","expect":[{"any":["nee","niet","geen","nooit","niets"],"next":"n4"},{"any":["ja","wel","gekregen","ontvangen"],"next":"n4b"}],"fallback":"Heeft u een brief of e-mail van ons ontvangen over het nieuwe bedrag?","next":"n4"},
+  "n4":{"say":"Dat is niet de bedoeling, mijn excuses. Ik kan het maandbedrag verlagen, of ik kan u eerst de berekening opsturen. Wat heeft uw voorkeur?","model":"Kunt u het bedrag verlagen en mij ook de berekening opsturen?","expect":[{"any":["verlagen","lager","omlaag","berekening","opsturen","sturen","mail","brief"],"next":"n5"}],"fallback":"Wilt u dat ik het bedrag verlaag, of wilt u eerst de berekening zien?","next":"n5"},
+  "n4b":{"say":"Dan heeft u gezien dat uw verbruik hoger was. Wilt u dat ik het maandbedrag toch verlaag? Dan moet u aan het einde van het jaar misschien bijbetalen.","open":true,"minWords":3,"next":"n5"},
+  "n5":{"say":"Dat regel ik voor u. U krijgt binnen twee werkdagen een bevestiging per e-mail. Kan ik verder nog iets voor u doen?","model":"Nee, dat was het. Bedankt voor uw hulp.","next":"n6"},
+  "n6":{"say":"Graag gedaan. Nog een fijne dag!","end":true}}},
+
+{"id":"s-retour","title":"Iets terugbrengen in de winkel","type":"roleplay","cefr":"A2","stage":2,"role":"verkoper","tags":["perfect","modal"],
+ "setting":"Je hebt vorige week een jas gekocht. Thuis blijkt hij te klein. Je gaat terug naar de winkel.","settingFa":"هفته‌ی پیش کاپشنی خریده‌ای که کوچک است. به مغازه برمی‌گردی.","start":"start",
+ "nodes":{
+  "start":{"say":"Goedemiddag. Kan ik u helpen?","open":true,"minWords":6,"hints":["Ik heb … gekocht, maar …","Kan ik dit ruilen?"],"model":"Ja, ik heb vorige week deze jas gekocht, maar hij is te klein. Kan ik hem ruilen?","next":"n2"},
+  "n2":{"say":"Dat kan. Heeft u de bon nog?","model":"Ja, alstublieft, hier is de bon.","expect":[{"any":["ja","hier","alstublieft","heb ik"],"next":"n3"},{"any":["nee","kwijt","niet meer","geen"],"next":"n3b"}],"fallback":"De kassabon — heeft u die bij u?","next":"n3"},
+  "n3":{"say":"Dank u. Wilt u een andere maat, of wilt u uw geld terug?","model":"Ik wil graag een maat groter, als u die heeft.","expect":[{"any":["maat","groter","kleiner","andere","ruilen"],"next":"n4"},{"any":["geld","terug"],"next":"n4b"}],"fallback":"Wilt u ruilen, of wilt u het geld terug?","next":"n4"},
+  "n3b":{"say":"Hm. Zonder bon kan ik geen geld teruggeven. Ik kan de jas wel ruilen voor een andere maat. Is dat goed?","twist":{"say":"Hm. Zonder bon kan ik eigenlijk niets doen. Heeft u misschien met pin betaald? Dan kan ik het opzoeken. Op welke dag was u hier?"},"open":true,"minWords":3,"next":"n4"},
+  "n4":{"say":"Even kijken… Ja, we hebben hem nog in een maat groter. Wilt u hem even passen?","model":"Ja, graag. Waar zijn de paskamers?","next":"n5"},
+  "n4b":{"say":"Prima. Het bedrag staat binnen drie werkdagen weer op uw rekening. Is dat goed?","next":"n5"},
+  "n5":{"say":"Dan is het zo geregeld. Nog een fijne dag!","end":true}}},
+
+{"id":"s-smalltalk","title":"Small talk met een collega","type":"roleplay","cefr":"B1","stage":2,"role":"collega","tags":["perfect","inversion"],
+ "setting":"Maandagochtend bij het koffieapparaat. Je collega Sanne komt naast je staan.","settingFa":"صبح دوشنبه کنار دستگاه قهوه. همکارت سانه کنارت می‌ایستد.","start":"start",
+ "nodes":{
+  "start":{"say":"Hé, goeiemorgen! Hoe was je weekend?","open":true,"minWords":10,"hints":["Ik ben naar … geweest.","Zaterdag heb ik …","Het was heel gezellig."],"model":"Goed, dank je! Zaterdag ben ik naar de markt geweest en zondag heb ik met vrienden gegeten.","next":"n2"},
+  "n2":{"say":"O, leuk! Doe je dat vaker?","open":true,"minWords":6,"model":"Ja, bijna elk weekend. Ik vind het heerlijk om buiten te zijn.","next":"n3"},
+  "n3":{"say":"Ik heb zelf de hele zondag in de tuin gewerkt, en nu heb ik overal spierpijn! Heb jij eigenlijk een tuin of een balkon?","model":"Nee, ik heb alleen een klein balkon, maar er staan wel veel planten.","expect":[{"any":["tuin","balkon","geen","nee","ja"],"next":"n4"}],"fallback":"Ik bedoel: heb je thuis een plek om buiten te zitten?","next":"n4"},
+  "n4":{"say":"Zeg, ga je vrijdag ook mee naar de borrel? De hele afdeling komt.","twist":{"say":"Zeg, iets heel anders: heb je al gehoord dat we gaan verhuizen naar een ander kantoor? Wat vind jij daarvan?"},"open":true,"minWords":5,"model":"Ja, ik heb er zin in. Hoe laat begint het?","next":"n5"},
+  "n5":{"say":"Oké! Nou, ik moet naar een vergadering. Ik spreek je later!","end":true}}},
+
+{"id":"s-vrienden","title":"Nieuwe mensen leren kennen","type":"roleplay","cefr":"B1","stage":2,"role":"medecursist","tags":["subclause","separable"],
+ "setting":"Je bent voor het eerst bij een sportles. Na afloop spreekt iemand je aan.","settingFa":"اولین بار است که به یک کلاس ورزشی آمده‌ای. بعد از کلاس کسی با تو صحبت می‌کند.","start":"start",
+ "nodes":{
+  "start":{"say":"Hoi! Ik heb je hier nog niet eerder gezien. Is dit je eerste les?","open":true,"minWords":5,"model":"Ja, dit is mijn eerste keer. Ik vond het leuk, maar ook best zwaar!","next":"n2"},
+  "n2":{"say":"Leuk! Ik ben Eva. Hoe ben je hier terechtgekomen?","open":true,"minWords":8,"hints":["Een collega heeft het me aangeraden.","Ik zocht een manier om …"],"model":"Een collega heeft het me aangeraden, omdat ik meer wilde bewegen.","next":"n3"},
+  "n3":{"say":"En wat doe je verder graag in je vrije tijd?","open":true,"minWords":10,"model":"Ik maak graag muziek en ik kijk veel films. In het weekend fiets ik vaak.","next":"n4"},
+  "n4":{"say":"O, dat vind ik ook leuk! Een paar van ons gaan na de les nog iets drinken. Ga je mee?","twist":{"say":"O, leuk! We gaan volgende week met een groepje naar een concert, maar de kaartjes kosten wel dertig euro. Heb je interesse, of is dat te duur?"},"model":"Ja, gezellig! Ik ga graag mee.","expect":[{"any":["ja","graag","leuk","gezellig","ga mee","goed","interesse"],"next":"n5"},{"any":["nee","helaas","kan niet","sorry","ik moet","te duur"],"next":"n5b"}],"fallback":"Heb je zin om mee te gaan?","next":"n5"},
+  "n5":{"say":"Gezellig! Dan zie ik je zo bij de uitgang.","end":true},
+  "n5b":{"say":"Geen probleem, volgende keer dan. Tot volgende week!","end":true}}},
+
+{"id":"s-werk","title":"Een probleem op het werk bespreken","type":"roleplay","cefr":"B1","stage":3,"role":"leidinggevende","tags":["subclause","connectors"],
+ "setting":"Je haalt de deadline van vrijdag niet, omdat je nog op informatie van een andere afdeling wacht. Je bespreekt het met je leidinggevende.","settingFa":"به ضرب‌الاجل جمعه نمی‌رسی، چون هنوز منتظر اطلاعات از بخش دیگری هستی. موضوع را با مدیرت در میان می‌گذاری.","start":"start",
+ "nodes":{
+  "start":{"say":"Hoi, kom binnen. Je wilde iets bespreken over het project?","open":true,"minWords":12,"hints":["Ik wilde het hebben over …","Het lukt me niet om … omdat …"],"model":"Ja, ik wilde het hebben over de deadline. Het lukt me niet om vrijdag klaar te zijn, omdat ik nog op informatie van de financiële afdeling wacht.","next":"n2"},
+  "n2":{"say":"Hm, dat is vervelend. Wat heb je nodig om het wél af te krijgen?","open":true,"minWords":8,"model":"Ik heb de cijfers van vorig jaar nodig. Als ik die morgen krijg, kan ik verder.","next":"n3"},
+  "n3":{"say":"En als je die informatie krijgt, wanneer is het dan klaar?","model":"Dan kan ik het volgende week woensdag opleveren.","expect":[{"any":["maandag","dinsdag","woensdag","donderdag","vrijdag","week","dagen","eind","volgende","morgen"],"next":"n4"}],"fallback":"Welke datum is voor jou haalbaar?","next":"n4"},
+  "n4":{"say":"Oké, dat lijkt me redelijk. Kun jij dat zelf even aan de klant laten weten?","twist":{"say":"Dat is eigenlijk te laat, want de klant rekent op vrijdag. Kun je een deel wél op tijd opleveren? Welk deel, en wat komt dan later?"},"open":true,"minWords":5,"model":"Ja, ik stuur de klant vandaag nog een e-mail met de nieuwe planning.","next":"n5"},
+  "n5":{"say":"Prima. Fijn dat je het op tijd aangeeft. Succes!","end":true}}},
+
+{"id":"s-sollicitatie","title":"Sollicitatiegesprek","type":"roleplay","cefr":"B1","stage":3,"role":"interviewer","tags":["past","connectors","subclause"],
+ "setting":"Je hebt een sollicitatiegesprek voor een functie die bij je past. Neem de tijd voor uitgebreide antwoorden.","settingFa":"برای شغلی که به تو می‌خورد مصاحبه‌ی کاری داری. با حوصله و کامل جواب بده.","start":"start",
+ "nodes":{
+  "start":{"say":"Welkom, fijn dat u er bent. Kunt u om te beginnen iets over uzelf vertellen?","open":true,"minWords":25,"hints":["Ik ben … en ik kom uit …","Ik heb … gestudeerd en … jaar gewerkt als …","Op dit moment …"],"model":"Dank u. Ik ben [je naam], ik kom uit Iran en ik woon sinds een paar jaar in Nederland. Ik heb een opleiding in de kunsten gevolgd en daarna een aantal jaren aan verschillende projecten gewerkt. Op dit moment zoek ik een functie waarin ik die ervaring kan gebruiken.","next":"n2"},
+  "n2":{"say":"Dank u. Waarom heeft u naar deze functie gesolliciteerd?","open":true,"minWords":20,"hints":["De functie spreekt me aan omdat …","Ik heb ervaring met …"],"model":"De functie spreekt me aan omdat ik graag in een team werk en omdat ik ervaring heb met dit soort projecten. Bovendien past uw organisatie bij wat ik belangrijk vind.","next":"n3"},
+  "n3":{"say":"Wat zijn uw sterke punten, en wat vindt u nog lastig?","open":true,"minWords":20,"model":"Ik ben nauwkeurig en ik kan goed met mensen omgaan. Wat ik nog lastig vind, is nee zeggen; daardoor neem ik soms te veel werk aan.","next":"n4"},
+  "n4":{"say":"Kunt u een voorbeeld geven van een moeilijke situatie op het werk, en hoe u die heeft opgelost?","twist":{"say":"U heeft nog weinig werkervaring in Nederland. Waarom zouden wij toch voor u kiezen, en niet voor een andere kandidaat?"},"open":true,"minWords":25,"hints":["Een tijd geleden …","Uiteindelijk heb ik …"],"model":"Een tijd geleden liep een project vertraging op, omdat twee collega’s het niet eens waren. Ik heb toen een gesprek georganiseerd waarin iedereen zijn standpunt kon uitleggen. Uiteindelijk hebben we een planning gemaakt waar iedereen achter stond.","next":"n5"},
+  "n5":{"say":"Dank u wel. Heeft u zelf nog vragen voor ons?","open":true,"minWords":5,"hints":["Hoe ziet een gewone werkdag eruit?","Hoe groot is het team?"],"model":"Ja, hoe ziet een gewone werkweek eruit in dit team?","next":"n6"},
+  "n6":{"say":"Goede vraag. Daar vertel ik u graag meer over in een tweede gesprek. U hoort uiterlijk vrijdag van ons. Bedankt voor uw komst!","end":true}}},
+
+{"id":"s-film","title":"Over een film, boek of serie praten","type":"free","cefr":"B1","stage":3,"tags":["past","relative"],
+ "setting":"Een vriend zoekt iets om te kijken of te lezen. Vertel vrij; er is geen goed of fout antwoord.","settingFa":"دوستی دنبال چیزی برای تماشا یا خواندن است. آزادانه تعریف کن؛ جواب درست و غلط وجود ندارد.","start":"start",
+ "nodes":{
+  "start":{"say":"Ik zoek iets om dit weekend te kijken of te lezen. Heb jij onlangs iets goeds gezien of gelezen? Waar ging het over?","open":true,"minWords":25,"targets":["Het gaat over …","Het speelt zich af in …","Het deed me denken aan …"],"model":"Ik heb vorige week een film gezien die over een familie in een klein dorp gaat. De vader wil het dorp verlaten, maar de rest van de familie wil blijven. Het deed me denken aan verhalen uit mijn eigen jeugd.","next":"n2"},
+  "n2":{"say":"Klinkt interessant. Wat vond je er zo goed aan — of juist niet?","open":true,"minWords":20,"targets":["Wat ik vooral goed vond, was …","Het maakte indruk op me omdat …"],"model":"Wat ik vooral goed vond, was het rustige tempo. Het einde maakte veel indruk op me, omdat je het totaal niet verwacht.","next":"n3"},
+  "n3":{"say":"En voor wie zou je het aanraden, en voor wie juist niet?","open":true,"minWords":15,"targets":["Ik zou het aanraden aan mensen die …","Als je van … houdt, …"],"model":"Ik zou het aanraden aan mensen die van langzame, mooie films houden. Als je vooral actie wilt zien, is het niets voor jou.","next":"n4"},
+  "n4":{"say":"Dank je, ik zet het op mijn lijstje!","end":true}}},
+
+{"id":"s-ervaring","title":"Een persoonlijke ervaring vertellen","type":"free","cefr":"B1","stage":3,"tags":["past","connectors"],
+ "setting":"Vertel een samenhangend verhaal in de verleden tijd. Gebruik woorden als toen, daarna, uiteindelijk.","settingFa":"یک روایت منسجم در زمان گذشته تعریف کن. از واژه‌هایی مثل toen، daarna، uiteindelijk استفاده کن.","start":"start",
+ "nodes":{
+  "start":{"say":"Vertel eens over je eerste weken in Nederland. Wat is je het meest bijgebleven?","open":true,"minWords":35,"targets":["Toen ik …","op een gegeven moment","uiteindelijk"],"model":"Toen ik in Nederland aankwam, was het winter en het regende bijna elke dag. Ik kende niemand en ik begreep de taal niet. Op een gegeven moment nodigde mijn buurvrouw me uit voor koffie, en daardoor voelde ik me voor het eerst een beetje thuis.","next":"n2"},
+  "n2":{"say":"Wat was het moeilijkste in die tijd, en hoe ben je daarmee omgegaan?","open":true,"minWords":30,"targets":["Het moeilijkste was dat …","Daarom …","Hoewel …"],"model":"Het moeilijkste was dat ik me niet goed kon uitdrukken. Daarom ben ik meteen met een taalcursus begonnen. Hoewel het in het begin frustrerend was, ging het elke week een beetje beter.","next":"n3"},
+  "n3":{"say":"Als je nu terugkijkt: wat zou je anders doen, en wat zou je iemand aanraden die net is aangekomen?","open":true,"minWords":30,"targets":["Als ik …, zou ik …","Ik zou iedereen aanraden om …"],"model":"Als ik opnieuw kon beginnen, zou ik eerder contact zoeken met Nederlanders. Ik zou iedereen aanraden om vanaf de eerste dag Nederlands te spreken, ook als het nog niet perfect is.","next":"n4"},
+  "n4":{"say":"Mooi verhaal. Dank je wel dat je het wilde delen.","end":true}}},
+
+{"id":"s-oneens","title":"Beleefd tegenspreken","type":"roleplay","cefr":"B1","stage":4,"role":"collega","tags":["conditional","connectors"],
+ "setting":"Je collega doet een voorstel waar je het niet mee eens bent. Spreek tegen — duidelijk, maar vriendelijk.","settingFa":"همکارت پیشنهادی می‌دهد که با آن موافق نیستی. مخالفت کن — واضح اما دوستانه.","start":"start",
+ "nodes":{
+  "start":{"say":"Ik heb een idee: laten we voortaan elke maandag om acht uur ’s ochtends met het hele team vergaderen. Dan beginnen we de week goed. Wat vind je?","open":true,"minWords":15,"hints":["Ik snap wat je bedoelt, maar …","Daar zit wat in, alleen …"],"model":"Ik snap wat je bedoelt, maar acht uur is voor veel collega’s te vroeg, omdat ze hun kinderen naar school moeten brengen.","next":"n2"},
+  "n2":{"say":"Maar als we later beginnen, is iedereen al met andere dingen bezig. Dan komt er niets van.","open":true,"minWords":15,"hints":["Dat hoeft niet per se.","Wat als we … ?"],"model":"Dat hoeft niet per se. Als we de vergadering kort houden en goed voorbereiden, kan het ook om half tien.","next":"n3"},
+  "n3":{"say":"Hm. Wat stel jij dan concreet voor?","open":true,"minWords":12,"hints":["Ik stel voor dat …","We zouden … kunnen …"],"model":"Ik stel voor dat we op maandag om half tien een half uur vergaderen, en dat iedereen vooraf zijn punten mailt.","next":"n4"},
+  "n4":{"say":"Oké, daar kan ik mee leven. Zullen we het een maand proberen en daarna evalueren?","twist":{"say":"Ik weet het niet, hoor. De directeur wil het zelf ook om acht uur. Wat zou jij tegen haar zeggen om haar te overtuigen?"},"open":true,"minWords":4,"model":"Goed idee. Dan kijken we na een maand of het werkt.","next":"n5"},
+  "n5":{"say":"Mooi, dan spreken we dat af. Bedankt voor het meedenken!","end":true}}},
+
+{"id":"s-directheid","title":"Discussie: Nederlandse directheid","type":"discussion","cefr":"B2","stage":4,"tags":["connectors","conditional","subclause"],
+ "setting":"B2-discussie. Bouw je betoog op: standpunt → argumenten → reactie op een tegenargument → conclusie.","settingFa":"بحث سطح B2. استدلالت را بساز: موضع ← دلایل ← پاسخ به استدلال مخالف ← نتیجه‌گیری.","start":"start",
+ "nodes":{
+  "start":{"say":"De stelling is: Nederlandse directheid is eerlijk, niet onbeleefd. Wat is jouw standpunt? Geef minstens twee argumenten.","open":true,"minWords":45,"targets":["Volgens mij …","Ten eerste … Ten tweede …","bovendien","bijvoorbeeld"],"model":"Volgens mij is directheid meestal eerlijk bedoeld. Ten eerste weet je precies waar je aan toe bent, waardoor er minder misverstanden ontstaan. Ten tweede bespaart het tijd, omdat je niet hoeft te raden wat iemand echt denkt. Aan de andere kant kan het hard overkomen als je het niet gewend bent.","next":"n2"},
+  "n2":{"say":"Een tegenargument: in veel culturen is het juist een teken van respect om kritiek voorzichtig te brengen. Wie altijd direct is, houdt geen rekening met de gevoelens van de ander. Hoe reageer je daarop?","open":true,"minWords":40,"targets":["Daar zit wat in, maar …","Dat hoeft niet per se …","in tegenstelling tot","rekening houden met"],"model":"Daar zit wat in, maar direct zijn hoeft niet per se onbeleefd te zijn. Het hangt af van de toon. Je kunt eerlijk zijn en toch rekening houden met de ander, bijvoorbeeld door eerst te zeggen wat goed ging.","next":"n3"},
+  "n3":{"say":"Kun je een eigen ervaring noemen waarin directheid goed, of juist slecht, uitpakte?","open":true,"minWords":35,"targets":["Toen ik …","Achteraf …","Daardoor …"],"model":"Toen ik net in Nederland werkte, zei een collega heel direct dat mijn presentatie te lang was. Eerst schrok ik ervan, maar achteraf was ik er blij mee, want daardoor heb ik geleerd om korter en duidelijker te presenteren.","next":"n4"},
+  "n4":{"say":"Vat tot slot je standpunt in twee of drie zinnen samen. Is het tijdens dit gesprek veranderd?","open":true,"minWords":20,"targets":["Kortom, …","Met andere woorden …","Al met al …"],"model":"Kortom, ik vind directheid waardevol, zolang je respectvol blijft. Mijn standpunt is niet veranderd, maar ik begrijp nu beter waarom het voor anderen hard kan klinken.","next":"n5"},
+  "n5":{"say":"Dank je. Je hebt een standpunt onderbouwd, op een tegenargument gereageerd en een conclusie getrokken: dat is de opbouw van een betoog op B2-niveau.","end":true}}},
+
+{"id":"s-technologie","title":"Discussie: maakt technologie ons eenzamer?","type":"discussion","cefr":"B2","stage":5,"tags":["connectors","passive","conditional"],
+ "setting":"B2-discussie over een abstract onderwerp. Vergelijk perspectieven en nuanceer je mening.","settingFa":"بحث سطح B2 درباره‌ی موضوعی انتزاعی. دیدگاه‌ها را مقایسه کن و نظرت را با ظرافت بیان کن.","start":"start",
+ "nodes":{
+  "start":{"say":"De stelling is: door smartphones en sociale media zijn mensen eenzamer geworden. Ben je het daarmee eens? Leg uit waarom.","open":true,"minWords":50,"targets":["Aan de ene kant …, aan de andere kant …","Het valt me op dat …","een rol spelen"],"model":"Aan de ene kant ben ik het ermee eens: het valt me op dat mensen in de trein nauwelijks nog met elkaar praten. Aan de andere kant speelt technologie ook een positieve rol, want je kunt makkelijker contact houden met mensen die ver weg wonen. Volgens mij ligt het probleem dus niet bij de technologie zelf, maar bij de manier waarop we die gebruiken.","next":"n2"},
+  "n2":{"say":"Een ander perspectief: dankzij videobellen spreken veel migranten hun familie elke dag. Zonder die technologie zouden zij juist veel eenzamer zijn. Verandert dat je mening?","open":true,"minWords":40,"targets":["Dat is een sterk argument, maar …","Je moet er rekening mee houden dat …","tenzij"],"model":"Dat is een sterk argument, en uit eigen ervaring weet ik dat het klopt. Toch moet je er rekening mee houden dat online contact niet hetzelfde is als iemand echt ontmoeten. Het helpt tegen heimwee, maar het vervangt geen vriendschappen in de buurt.","next":"n3"},
+  "n3":{"say":"Vergelijk jouw generatie met die van je ouders. Wie had volgens jou sterkere sociale contacten, en waardoor komt dat?","open":true,"minWords":40,"targets":["In vergelijking met …","In tegenstelling tot …","Vroeger … terwijl nu …"],"model":"In vergelijking met mijn generatie hadden mijn ouders minder, maar diepere contacten. Vroeger kwamen buren gewoon langs, terwijl we nu eerst een afspraak moeten maken. In tegenstelling tot hen ken ik wel mensen over de hele wereld.","next":"n4"},
+  "n4":{"say":"Stel dat je één regel mocht invoeren om eenzaamheid te verminderen. Wat zou je doen, en welk nadeel zou die regel kunnen hebben?","open":true,"minWords":35,"targets":["Als ik … mocht …, zou ik …","Het nadeel zou zijn dat …","Kortom …"],"model":"Als ik één regel mocht invoeren, zou ik in elke wijk een plek maken waar buren elkaar gratis kunnen ontmoeten. Het nadeel zou zijn dat het geld kost en dat niet iedereen komt. Kortom: je kunt contact niet afdwingen, maar je kunt het wel makkelijker maken.","next":"n5"},
+  "n5":{"say":"Dank je. Je hebt perspectieven vergeleken, je mening genuanceerd en een hypothetisch voorstel verdedigd. Dat zijn kernvaardigheden op B2-niveau.","end":true}}},
+
+{"id":"s-diagnostic","title":"Kort interview (niveaubepaling)","type":"free","hidden":true,"cefr":"B1","stage":1,
+ "setting":"Drie vragen, van makkelijk naar moeilijk. Praat zo lang en zo vrij als je kunt.","settingFa":"سه پرسش، از آسان به دشوار. هر قدر می‌توانی آزاد و طولانی صحبت کن.","start":"start",
+ "nodes":{
+  "start":{"say":"Vertel iets over jezelf. Waar woon je, wat doe je, en hoe ziet een gewone dag eruit?","open":true,"minWords":1,"next":"n2"},
+  "n2":{"say":"Vertel over iets leuks of moeilijks dat je de afgelopen maand hebt meegemaakt. Wat gebeurde er precies?","open":true,"minWords":1,"next":"n3"},
+  "n3":{"say":"Wat vind jij: moeten nieuwkomers verplicht Nederlands leren? Geef je mening met argumenten, en noem ook een tegenargument.","open":true,"minWords":1,"next":"n4"},
+  "n4":{"say":"Dank je wel. Dat was het interview.","end":true}}}
+],
+"missions": [
+{"id":"m-winkel","title":"Stel een vraag aan een winkelmedewerker","cefr":"A2","stage":1,"scenario":"s-retour",
+ "goal":"Stel in een winkel minstens één vraag in het Nederlands en reageer op het antwoord.","goalFa":"در یک مغازه دست‌کم یک سؤال به هلندی بپرس و به جواب واکنش نشان بده.",
+ "phrases":[{"nl":"Pardon, mag ik iets vragen?","fa":"ببخشید، می‌توانم چیزی بپرسم؟"},{"nl":"Waar kan ik … vinden?","fa":"... را کجا می‌توانم پیدا کنم؟"},{"nl":"Heeft u dit ook in een andere maat of kleur?","fa":"این را در سایز یا رنگ دیگری هم دارید؟"},{"nl":"Dank u wel voor uw hulp.","fa":"از کمکتان ممنونم."}],
+ "responses":["Dat ligt in gang drie, naast de zuivel.","Nee, helaas, dat is uitverkocht.","Ik kijk even voor u in het magazijn."]},
+{"id":"m-bellen","title":"Pleeg een telefoontje in het Nederlands","cefr":"A2","stage":1,"scenario":"s-afspraak",
+ "goal":"Bel een praktijk, kapper, restaurant of instantie en regel iets in het Nederlands.","goalFa":"به یک مطب، آرایشگاه، رستوران یا اداره زنگ بزن و کاری را به هلندی انجام بده.",
+ "phrases":[{"nl":"Goedemorgen, u spreekt met …","fa":"صبح به‌خیر، ... صحبت می‌کند."},{"nl":"Ik wil graag een afspraak maken.","fa":"می‌خواهم وقت بگیرم."},{"nl":"Kunt u dat herhalen, alstublieft?","fa":"لطفاً تکرار می‌کنید؟"},{"nl":"Dus dat is donderdag om tien uur. Klopt dat?","fa":"پس پنج‌شنبه ساعت ده. درست است؟"}],
+ "responses":["Een momentje, ik verbind u door.","Wat is uw geboortedatum?","Kunt u morgen om half drie?"]},
+{"id":"m-vijf-minuten","title":"Voer een gesprek van vijf minuten","cefr":"B1","stage":2,"scenario":"s-buren",
+ "goal":"Praat minstens vijf minuten met een buur, collega of kennis — alleen in het Nederlands.","goalFa":"دست‌کم پنج دقیقه با یک همسایه، همکار یا آشنا فقط به هلندی صحبت کن.",
+ "phrases":[{"nl":"Hoe gaat het ermee?","fa":"اوضاع چطور است؟"},{"nl":"Wat heb je in het weekend gedaan?","fa":"آخر هفته چه کار کردی؟"},{"nl":"O ja? Vertel!","fa":"جدی؟ تعریف کن!"},{"nl":"Wat vind jij ervan?","fa":"نظر تو چیست؟"}],
+ "responses":["Druk, druk, druk. En met jou?","Niks bijzonders, een beetje geklust.","Heb je het al gehoord van … ?"]},
+{"id":"m-klantenservice","title":"Leg een probleem uit aan de klantenservice","cefr":"B1","stage":2,"scenario":"s-klantenservice",
+ "goal":"Neem contact op met een klantenservice (telefoon of balie) en leg een echt probleem uit.","goalFa":"با خدمات مشتریان (تلفنی یا حضوری) تماس بگیر و یک مشکل واقعی را توضیح بده.",
+ "phrases":[{"nl":"Ik bel omdat er iets niet klopt met …","fa":"زنگ می‌زنم چون مشکلی در ... هست."},{"nl":"Het probleem is dat …","fa":"مشکل این است که ..."},{"nl":"Wat kunt u voor mij doen?","fa":"چه کاری می‌توانید برایم انجام دهید؟"},{"nl":"Kunt u dat per e-mail bevestigen?","fa":"می‌توانید با ایمیل تأیید کنید؟"}],
+ "responses":["Mag ik uw klantnummer?","Ik ga het voor u uitzoeken.","U wordt binnen twee werkdagen teruggebeld."]},
+{"id":"m-geen-engels","title":"Vraag om verduidelijking — zonder Engels","cefr":"B1","stage":2,"scenario":"s-huisarts",
+ "goal":"Als je iets niet begrijpt of iemand op Engels overschakelt: blijf in het Nederlands en vraag om uitleg.","goalFa":"اگر چیزی را نفهمیدی یا طرف مقابل به انگلیسی تغییر زبان داد: به هلندی ادامه بده و توضیح بخواه.",
+ "phrases":[{"nl":"Sorry, ik versta u niet goed. Kunt u dat herhalen?","fa":"ببخشید، خوب نشنیدم. می‌شود تکرار کنید؟"},{"nl":"Kunt u wat langzamer praten?","fa":"می‌شود کمی آهسته‌تر صحبت کنید؟"},{"nl":"Bedoelt u dat … ?","fa":"منظورتان این است که ...؟"},{"nl":"Ik wil graag Nederlands oefenen. Zullen we Nederlands praten?","fa":"دوست دارم هلندی تمرین کنم. هلندی صحبت کنیم؟"}],
+ "responses":["O, natuurlijk, sorry!","Ik zeg het anders: …","Je Nederlands is hartstikke goed!"]},
+{"id":"m-film","title":"Bespreek een film of nieuwsbericht","cefr":"B1","stage":3,"scenario":"s-film",
+ "goal":"Vertel iemand in het Nederlands over een film, serie of nieuwsbericht en vraag naar zijn of haar mening.","goalFa":"درباره‌ی یک فیلم، سریال یا خبر به هلندی برای کسی تعریف کن و نظرش را بپرس.",
+ "phrases":[{"nl":"Heb je … al gezien?","fa":"... را دیده‌ای؟"},{"nl":"Het gaat over …","fa":"درباره‌ی ... است."},{"nl":"Wat mij vooral opviel, was …","fa":"چیزی که بیشتر توجهم را جلب کرد ... بود."},{"nl":"Wat vind jij daarvan?","fa":"نظر تو درباره‌اش چیست؟"}],
+ "responses":["Nee, is het een aanrader?","Daar heb ik over gelezen.","Ik ben het niet helemaal met je eens."]}
+]
+}

@@ -1,0 +1,137 @@
+{
+"format": "dutch-coach-pack", "formatVersion": 1, "id": "core-listening", "version": "1.0.0",
+"title": "Luisteren en shadowing (A2–B2)",
+"description": "Originele dialogen in gesproken Nederlands. Audio wordt op het toestel gegenereerd (spraaksynthese).",
+"dialogues": [
+{"id":"d-cafe","title":"Bestellen in een café","cefr":"A2","stage":1,"topic":"café en winkel","lines":[
+ {"sp":"Ober","nl":"Goedemiddag, zeg het maar.","fa":"عصر به‌خیر، بفرمایید."},
+ {"sp":"Klant","nl":"Hoi. Doe maar een cappuccino en een stuk appeltaart.","fa":"سلام. یک کاپوچینو و یک برش کیک سیب بدهید."},
+ {"sp":"Ober","nl":"Met slagroom?","fa":"با خامه؟"},
+ {"sp":"Klant","nl":"Ja, lekker. En heeft u ook havermelk?","fa":"بله، عالی. شیر جو دوسر هم دارید؟"},
+ {"sp":"Ober","nl":"Jazeker. Dat kost wel dertig cent extra.","fa":"البته. ولی سی سنت اضافه می‌شود."},
+ {"sp":"Klant","nl":"Dat maakt niet uit.","fa":"فرقی نمی‌کند."},
+ {"sp":"Ober","nl":"Anders nog iets?","fa":"چیز دیگری هم می‌خواهید؟"},
+ {"sp":"Klant","nl":"Nee, dat was het. Kan ik hier pinnen?","fa":"نه، همین بود. می‌توانم این‌جا با کارت پرداخت کنم؟"},
+ {"sp":"Ober","nl":"Ja hoor, alleen pinnen zelfs. Ik breng het zo naar uw tafel.","fa":"بله، اصلاً فقط کارت قبول می‌کنیم. الان سرِ میزتان می‌آورم."}],
+ "questions":[
+ {"q":"Wat bestelt de klant?","options":["Een cappuccino en appeltaart","Een thee en een broodje","Twee cappuccino’s"],"a":0},
+ {"q":"Wat kost dertig cent extra?","options":["De slagroom","De havermelk","Het pinnen"],"a":1},
+ {"q":"Hoe kan de klant betalen?","options":["Alleen contant","Contant of met pin","Alleen met pin"],"a":2}]},
+
+{"id":"d-buren","title":"Een praatje met de buurvrouw","cefr":"A2","stage":1,"topic":"small talk","lines":[
+ {"sp":"Buurvrouw","nl":"Hé, goedemorgen! Jij bent toch de nieuwe buurman van nummer twaalf?","fa":"سلام، صبح به‌خیر! شما همسایه‌ی جدیدِ شماره‌ی دوازده هستید، درست است؟"},
+ {"sp":"Buurman","nl":"Ja, dat klopt. Ik woon hier sinds vorige week.","fa":"بله، درست است. از هفته‌ی پیش این‌جا زندگی می‌کنم."},
+ {"sp":"Buurvrouw","nl":"Wat leuk. En, bevalt het een beetje?","fa":"چه خوب. خب، راضی هستید؟"},
+ {"sp":"Buurman","nl":"Ja, het is een rustige straat. Ik moet alleen nog wennen aan de trap. Die is heel steil!","fa":"بله، خیابان آرامی است. فقط باید به پله‌ها عادت کنم. خیلی شیب دارد!"},
+ {"sp":"Buurvrouw","nl":"Ha, typisch Nederlands. Zeg, op vrijdag wordt het oud papier opgehaald. Je kunt het gewoon aan de straat zetten.","fa":"ها، کاملاً هلندی است. راستی، جمعه‌ها کاغذ باطله را جمع می‌کنند. می‌توانید کنار خیابان بگذارید."},
+ {"sp":"Buurman","nl":"O, goed om te weten. Dank je wel.","fa":"آه، خوب شد گفتید. ممنونم."},
+ {"sp":"Buurvrouw","nl":"Als je iets nodig hebt, bel je gewoon aan, hè?","fa":"اگر چیزی لازم داشتید، راحت زنگ بزنید، باشد؟"},
+ {"sp":"Buurman","nl":"Dat is aardig. Kom anders een keer koffie drinken!","fa":"لطف دارید. اصلاً یک بار برای قهوه بیایید!"}],
+ "questions":[
+ {"q":"Hoe lang woont de buurman in de straat?","options":["Sinds vorige week","Sinds vorig jaar","Sinds vrijdag"],"a":0},
+ {"q":"Waar moet hij nog aan wennen?","options":["Aan de buren","Aan de steile trap","Aan het lawaai"],"a":1},
+ {"q":"Wat gebeurt er op vrijdag?","options":["Er is een buurtfeest","Het oud papier wordt opgehaald","De buurvrouw komt koffie drinken"],"a":1}]},
+
+{"id":"d-huisarts","title":"De huisarts bellen","cefr":"B1","stage":2,"topic":"gezondheid","lines":[
+ {"sp":"Assistente","nl":"Huisartsenpraktijk De Linde, goedemorgen."},
+ {"sp":"Patiënt","nl":"Goedemorgen. Ik wil graag een afspraak maken met dokter Visser."},
+ {"sp":"Assistente","nl":"Dat kan. Wat zijn uw klachten?"},
+ {"sp":"Patiënt","nl":"Ik heb al ruim een week last van mijn keel, en sinds gisteren heb ik ook koorts."},
+ {"sp":"Assistente","nl":"Hoe hoog is de koorts?"},
+ {"sp":"Patiënt","nl":"Vanochtend was het achtendertig vijf."},
+ {"sp":"Assistente","nl":"Oké. Dokter Visser zit vandaag helemaal vol, maar u kunt morgen om tien over negen terecht. Of vanmiddag bij dokter Bakker."},
+ {"sp":"Patiënt","nl":"Dan liever vanmiddag. Hoe laat is dat?"},
+ {"sp":"Assistente","nl":"Om kwart voor vier. Wat is uw geboortedatum?"},
+ {"sp":"Patiënt","nl":"Twaalf maart negentienachtentachtig."},
+ {"sp":"Assistente","nl":"Dank u wel. Als de klachten erger worden, moet u meteen terugbellen."}],
+ "questions":[
+ {"q":"Welke klachten heeft de patiënt?","options":["Rugpijn en hoofdpijn","Keelpijn en koorts","Buikpijn en koorts"],"a":1},
+ {"q":"Waarom kan de patiënt vandaag niet bij dokter Visser terecht?","options":["Hij is op vakantie","Zijn spreekuur zit vol","Hij werkt alleen ’s ochtends"],"a":1},
+ {"q":"Welke afspraak kiest de patiënt?","options":["Morgen om 9.10 uur","Vanmiddag om 15.45 uur","Vanmiddag om 16.15 uur"],"a":1}]},
+
+{"id":"d-collega","title":"Maandagochtend op kantoor","cefr":"B1","stage":2,"topic":"werk","lines":[
+ {"sp":"Sanne","nl":"Môgge! Hoe was je weekend?"},
+ {"sp":"Reza","nl":"Goed, dank je. We zijn zaterdag naar Utrecht geweest, naar de markt. En jij?"},
+ {"sp":"Sanne","nl":"Lekker rustig. Ik had eigenlijk een verjaardag, maar die ging niet door omdat mijn zus ziek was."},
+ {"sp":"Reza","nl":"Ach, wat jammer. Gaat het nu weer een beetje met haar?"},
+ {"sp":"Sanne","nl":"Ja, het valt gelukkig mee. Zeg, heb jij de mail van Peter gezien over de vergadering?"},
+ {"sp":"Reza","nl":"Nee, nog niet. Wat is er dan?"},
+ {"sp":"Sanne","nl":"Die is verzet naar donderdag, omdat de klant dinsdag niet kan."},
+ {"sp":"Reza","nl":"Donderdag werk ik thuis. Kan ik dan online meedoen?"},
+ {"sp":"Sanne","nl":"Volgens mij wel, maar dat moet je even met Peter overleggen."},
+ {"sp":"Reza","nl":"Doe ik. Eerst koffie. Wil jij ook?"},
+ {"sp":"Sanne","nl":"Ja, graag. Doe maar zwart."}],
+ "questions":[
+ {"q":"Waarom ging de verjaardag niet door?","options":["Sanne moest werken","De zus van Sanne was ziek","Het was slecht weer"],"a":1},
+ {"q":"Wanneer is de vergadering nu?","options":["Op dinsdag","Op donderdag","Op maandag"],"a":1},
+ {"q":"Wat moet Reza met Peter overleggen?","options":["Of hij online kan meedoen","Of de klant kan komen","Of hij vrij kan nemen"],"a":0}]},
+
+{"id":"d-klantenservice","title":"Een storing melden","cefr":"B1","stage":2,"topic":"klantenservice","lines":[
+ {"sp":"Medewerker","nl":"Goedemiddag, klantenservice van NetThuis, u spreekt met Daan."},
+ {"sp":"Klant","nl":"Goedemiddag. Ik bel omdat mijn internet het sinds gisteravond niet meer doet."},
+ {"sp":"Medewerker","nl":"Wat vervelend. Mag ik uw postcode en huisnummer?"},
+ {"sp":"Klant","nl":"Drie vijf een twee A B, nummer veertig."},
+ {"sp":"Medewerker","nl":"Dank u. Ik zie geen storing in uw wijk. Heeft u de modem al opnieuw opgestart?"},
+ {"sp":"Klant","nl":"Ja, twee keer. Het lampje blijft rood knipperen."},
+ {"sp":"Medewerker","nl":"Dan ligt het waarschijnlijk aan de modem zelf. Ik kan een monteur langs sturen, of we sturen u een nieuwe modem op."},
+ {"sp":"Klant","nl":"Wat is het snelst? Ik werk thuis, dus ik heb het echt nodig."},
+ {"sp":"Medewerker","nl":"Een nieuwe modem heeft u morgen in huis. De monteur kan pas vrijdag."},
+ {"sp":"Klant","nl":"Stuurt u dan maar een nieuwe modem. Moet ik daarvoor betalen?"},
+ {"sp":"Medewerker","nl":"Nee, dat is kosteloos. U krijgt vandaag nog een bevestiging per mail."}],
+ "questions":[
+ {"q":"Wat is het probleem?","options":["De rekening klopt niet","Het internet werkt niet","De klant wil opzeggen"],"a":1},
+ {"q":"Wat denkt de medewerker dat de oorzaak is?","options":["Een storing in de wijk","De modem is kapot","De klant heeft niet betaald"],"a":1},
+ {"q":"Waarom kiest de klant voor een nieuwe modem?","options":["Dat is goedkoper","Dat gaat sneller dan de monteur","De monteur komt nooit"],"a":1}]},
+
+{"id":"d-film","title":"Over een film praten","cefr":"B1","stage":3,"topic":"film en boeken","lines":[
+ {"sp":"Lotte","nl":"Heb je uiteindelijk die film nog gezien waar iedereen het over heeft?"},
+ {"sp":"Arash","nl":"Ja, afgelopen vrijdag. Eerlijk gezegd viel hij me een beetje tegen."},
+ {"sp":"Lotte","nl":"Echt? Ik vond hem juist prachtig. Wat vond je er niet goed aan?"},
+ {"sp":"Arash","nl":"Het verhaal ging heel langzaam. Het eerste uur gebeurde er bijna niets."},
+ {"sp":"Lotte","nl":"Daar zit wat in, maar daardoor leer je de personages wel goed kennen."},
+ {"sp":"Arash","nl":"Dat is waar. En het einde maakte wel indruk op me, dat had ik totaal niet verwacht."},
+ {"sp":"Lotte","nl":"Precies! Het deed me denken aan de films die ik vroeger met mijn vader keek."},
+ {"sp":"Arash","nl":"Zou je hem nog een keer willen zien?"},
+ {"sp":"Lotte","nl":"Zeker. Als je het einde kent, kijk je heel anders naar het begin."},
+ {"sp":"Arash","nl":"Misschien moet ik hem dan toch een tweede kans geven."}],
+ "questions":[
+ {"q":"Wat vond Arash van de film?","options":["Prachtig","Een beetje teleurstellend","Te eng"],"a":1},
+ {"q":"Wat is volgens Lotte het voordeel van het langzame begin?","options":["Je leert de personages goed kennen","De film duurt korter","Het is beter te volgen"],"a":0},
+ {"q":"Wat vonden ze allebei goed?","options":["De muziek","Het begin","Het einde"],"a":2}]},
+
+{"id":"d-thuiswerken","title":"Discussie: twee vaste kantoordagen?","cefr":"B2","stage":4,"topic":"werk","lines":[
+ {"sp":"Marieke","nl":"De directie wil dat iedereen weer minstens twee vaste dagen per week op kantoor komt. Hoe kijken jullie daartegenaan?"},
+ {"sp":"Farid","nl":"Eerlijk gezegd heb ik er gemengde gevoelens over. Aan de ene kant begrijp ik dat het goed is voor de samenwerking, aan de andere kant ben ik thuis veel productiever."},
+ {"sp":"Marieke","nl":"Dat hoor ik vaker. Maar valt het je niet op dat nieuwe collega’s nauwelijks iemand kennen?"},
+ {"sp":"Farid","nl":"Dat is zo, en daar moeten we zeker rekening mee houden. Alleen betwijfel ik of vaste dagen de oplossing zijn."},
+ {"sp":"Marieke","nl":"Wat zou jij dan voorstellen?"},
+ {"sp":"Farid","nl":"Laat elk team zelf bepalen wanneer het samenkomt, zolang dat maar minstens één keer per week is. Dan heeft het ook echt zin om te komen."},
+ {"sp":"Marieke","nl":"Het risico is wel dat het kantoor op dinsdag en donderdag overvol zit en op vrijdag leeg staat."},
+ {"sp":"Farid","nl":"Dat hoeft niet per se een probleem te zijn, tenzij er te weinig werkplekken zijn. Dat zouden we eerst moeten uitzoeken."},
+ {"sp":"Marieke","nl":"Goed punt. Ik stel voor dat we dit voorleggen aan de teamleiders en dat we er volgende maand op terugkomen."},
+ {"sp":"Farid","nl":"Prima. Met andere woorden: nog geen besluit, maar wel een richting."}],
+ "questions":[
+ {"q":"Wat vindt Farid van het plan van de directie?","options":["Hij is er helemaal voor","Hij twijfelt: hij ziet voor- en nadelen","Hij is er fel op tegen"],"a":1},
+ {"q":"Wat stelt Farid voor?","options":["Iedereen altijd thuis laten werken","Teams zelf laten kiezen, minstens één dag samen","Drie vaste kantoordagen"],"a":1},
+ {"q":"Welk risico noemt Marieke?","options":["Het kantoor is op sommige dagen te vol","Nieuwe collega’s nemen ontslag","De directie wordt boos"],"a":0},
+ {"q":"Wat is de uitkomst van het gesprek?","options":["Het plan gaat definitief door","Er is nog geen besluit; het wordt eerst besproken met de teamleiders","Het plan is afgewezen"],"a":1}]},
+
+{"id":"d-taal","title":"Discussie: Engels of Nederlands spreken met nieuwkomers?","cefr":"B2","stage":5,"topic":"samenleving","lines":[
+ {"sp":"Presentator","nl":"Veel nieuwkomers klagen dat Nederlanders meteen overschakelen op Engels zodra ze een accent horen. Is dat beleefd of juist niet? Joost, jij vindt het geen probleem."},
+ {"sp":"Joost","nl":"Nee, ik zie het vooral als behulpzaamheid. Als ik merk dat iemand moeite heeft, wil ik het gesprek makkelijker maken. Daar is toch niets mis mee?"},
+ {"sp":"Nasrin","nl":"Ik snap wat je bedoelt, maar het effect is het tegenovergestelde. Toen ik hier net woonde, kreeg ik nauwelijks de kans om te oefenen. Op een gegeven moment durfde ik het gewoon niet meer te proberen."},
+ {"sp":"Joost","nl":"Maar je kunt toch zeggen dat je liever Nederlands spreekt?"},
+ {"sp":"Nasrin","nl":"Dat doe ik nu ook. Alleen, daar moet je wel zelfvertrouwen voor hebben, en dat heb je juist niet als beginner. Bovendien voelt het soms alsof je er niet helemaal bij hoort."},
+ {"sp":"Presentator","nl":"Speelt het ook een rol dat Nederlanders graag efficiënt zijn?"},
+ {"sp":"Joost","nl":"Ongetwijfeld. Aan de kassa of aan de telefoon wil je snel klaar zijn. Daar ga ik eerlijk gezegd niet langzaam Nederlands praten als het in het Engels in tien seconden geregeld is."},
+ {"sp":"Nasrin","nl":"Dat begrijp ik, en in zo’n situatie maakt het mij ook weinig uit. Maar bij de buren, op het werk of op een verjaardag ligt dat anders. Daar leer je de taal, en daar bouw je contacten op."},
+ {"sp":"Joost","nl":"Daar zit wat in. Misschien zou ik gewoon moeten vragen wat iemand zelf prettig vindt."},
+ {"sp":"Nasrin","nl":"Precies. Eén simpele vraag: ‘Zullen we Nederlands praten?’ Dat zou al een enorm verschil maken."},
+ {"sp":"Presentator","nl":"Dus samengevat: niet automatisch overschakelen, maar het de ander laten kiezen."}],
+ "questions":[
+ {"q":"Waarom schakelt Joost over op Engels?","options":["Hij wil zijn Engels oefenen","Hij wil behulpzaam zijn en het gesprek makkelijker maken","Hij verstaat het accent niet"],"a":1},
+ {"q":"Wat was het gevolg voor Nasrin toen ze net in Nederland woonde?","options":["Ze leerde snel Engels","Ze durfde geen Nederlands meer te proberen","Ze kreeg meer Nederlandse vrienden"],"a":1},
+ {"q":"In welke situaties vindt Nasrin Engels minder erg?","options":["Bij korte, praktische contacten zoals aan de kassa","Op het werk en bij de buren","Op verjaardagen"],"a":0},
+ {"q":"Welke oplossing komt uit het gesprek?","options":["Altijd Nederlands spreken","Altijd Engels spreken","Vragen welke taal de ander wil spreken"],"a":2}]}
+]
+}

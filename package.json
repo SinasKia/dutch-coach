@@ -1,0 +1,13 @@
+{
+  "name": "dutch-coach",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Persoonlijke, offline-first Nederlandse taalcoach (A2/B1 -> B2). Geen API's, geen afhankelijkheden.",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node tools/validate-pack.mjs",
+    "icons": "node tools/make-icons.mjs"
+  }
+}
