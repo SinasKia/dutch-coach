@@ -35,11 +35,16 @@ The tests cover the engine (`js/engine/`):
 | Service worker precaches all 27 files; with the server stopped the app reloads and shows saved data | works |
 | Dutch voice detected, speech recognition and recorder APIs present | detected on Windows Chromium |
 
-## Not tested — please check on your phone
+## Confirmed on the user's Android phone (Chrome, live site)
 
-- Installation on a real Android device and behaviour as an installed app.
-- Speech recognition quality and the start/stop/restart logic on Android Chrome. This is the part most likely to need adjustment.
-- Dutch voice quality and the hide-text-until-asked flow with real audio.
+- Installation to the home screen.
+- Dutch text-to-speech voice.
+- Speech recognition in a speaking scenario.
+
+## Not tested yet
+
+- Long pauses during speech recognition (the restart logic) and recognition accuracy over many sessions.
+- The hide-text-until-asked listening flow with real audio.
 - Recording and playback in shadowing on Android.
 - The file picker for pack import and backup restore on Android.
 - Dark mode appearance (implemented, not visually reviewed).
