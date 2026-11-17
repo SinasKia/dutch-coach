@@ -1,6 +1,6 @@
 # Dutch Coach
 
-A personal, offline-first Dutch learning app (PWA) that takes a Persian-speaking learner from A2/B1 towards conversational B2. Everything runs on the device: **no account, no backend, no API keys, no paid services, no AI inference.**
+A personal, offline-first Dutch learning app (PWA) that takes a learner from A2/B1 towards conversational B2. Everything runs on the device: **no account, no backend, no API keys, no paid services, no AI inference.**
 
 ## Quick start
 
@@ -23,8 +23,8 @@ Requires Node 20+ for the tools only. The app itself is plain HTML, CSS and ES m
 
 - **Today** — asks how much time you have (10–60 min or custom) and builds a session: recall, grammar, listening, a conversation, and a wrap-up. Base split 40% speaking, 25% listening, 20% vocabulary, 15% grammar, shifted by due reviews, recurring errors and the week's balance. Gaps are met with a gentler session, never a penalty.
 - **Speak** — turn-based voice conversations in five modes: guided, role-play, challenge (unexpected twists), free speaking, B2 discussion. 15 scenarios. Feedback after each: what worked, main errors, corrections, a natural model answer, one focused exercise.
-- **Listen** — 8 original dialogues (A2–B2): listen without text, answer questions, read along (Persian side-by-side at A2), then shadow line by line and record yourself.
-- **Vocabulary** — 79 chunks and expressions with Persian meaning, English gloss, example, context, register and collocations. Scheduled with FSRS-4.5. Save your own from dialogues and feedback.
+- **Listen** — 8 original dialogues (A2–B2): listen without text, answer questions, read along (English side-by-side at A2), then shadow line by line and record yourself.
+- **Vocabulary** — 79 chunks and expressions with English meaning, example, context, register and collocations. Scheduled with FSRS-4.5. Save your own from dialogues and feedback.
 - **Grammar** — 16 short lessons: example → explanation → typical mistakes → practice → produce → use in a conversation.
 - **Missions** — real-world tasks with phrases, rehearsal, and a follow-up after you confirm you did it.
 - **Progress** — estimated level per skill (from the diagnostic only), weekly time, retention, error patterns, stage checklist, four-week checkpoints with comparison.

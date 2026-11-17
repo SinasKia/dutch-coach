@@ -1,8 +1,8 @@
 // App shell: startup, navigation, Today screen, planned sessions, onboarding and diagnostic.
-import { h, append, clear, fa, icon, btn, card, pill, toast, bar, mins, dateNL } from './ui.js';
+import { h, append, clear, icon, btn, card, pill, toast, bar, mins, dateNL } from './ui.js';
 import { S, init, save, logActivity, markDone } from './store.js';
 import { route, routes, go, parse } from './router.js';
-import { runExercises, runReview, runListening, runConversation, drillFor, faHelp, audioBtn, vocabExercise } from './activities.js';
+import { runExercises, runReview, runListening, runConversation, drillFor, enHelp, audioBtn, vocabExercise } from './activities.js';
 import { buildSession, minutesSince, startOfWeek, startOfDay, daysSinceLast, weakSkills, LEVEL_LABEL, CEFR_NUM, levelFromResults, nextLevel, speakingLevel, stageFromLevels, STAGES } from './engine/learner.js';
 import { dueCards, DAY } from './engine/srs.js';
 import { expand, variantCount } from './engine/exercises.js';
@@ -96,7 +96,7 @@ route('session', (root) => {
   if (step.kind === 'vocab') runReview(body, { reviewN: step.reviewN, newN: step.newN, onDone: (r) => { if (r.sec > 5) logActivity('vocab', r.sec, 'review', {}); next(r); } });
   else if (step.kind === 'grammar') {
     const g = S.content.byId[step.ref];
-    append(body, card(h('h2', {}, g.title), h('p', { class: 'sentence', lang: 'nl' }, g.example, ' ', audioBtn(g.example)), h('p', {}, g.explain), faHelp(g.explainFa, 'block muted'),
+    append(body, card(h('h2', {}, g.title), h('p', { class: 'sentence', lang: 'nl' }, g.example, ' ', audioBtn(g.example)), h('p', {}, g.explain), enHelp(g.explainEn, 'block muted'),
       h('div', { class: 'row end' }, btn('Oefenen', () => runExercises(body, drillFor(g.skill, step.n, g.id), { title: g.title, onDone: (r) => { logActivity('grammar', r.sec, g.id, { correct: r.correct, total: r.total }); markDone(g.id); next(r); } }), 'primary'))));
   } else if (step.kind === 'listen') runListening(body, S.content.byId[step.ref], { shadow: step.shadow, onDone: next });
   else if (step.kind === 'speak') runConversation(body, S.content.byId[step.ref], step.mode, { onDone: next });
@@ -129,9 +129,9 @@ route('onboarding', (root) => {
   const hours = h('input', { class: 'text narrow', type: 'number', min: 1, max: 30, value: S.settings.weeklyHours, 'aria-label': 'Uren per week' });
   const finish = (to) => { S.settings.weeklyHours = Math.max(1, Number(hours.value) || 6); S.profile.onboarded = true; if (!S.profile.levels.grammar) { S.profile.levels = { grammar: 1.5, vocab: 1.5, listening: 1.5, speaking: 1.5 }; S.profile.assumed = true; } save('settings'); save('profile'); go(to); };
   append(root, h('h1', {}, 'Welkom bij je Nederlandse taalcoach'),
-    card(fa('خوش آمدید! این برنامه یک مربی شخصی زبان هلندی است که شما را از سطح A2/B1 به‌سوی مکالمه‌ی روان در سطح B2 همراهی می‌کند.', 'block'),
-      fa('همه‌چیز روی دستگاه خودتان اجرا می‌شود: بدون حساب کاربری، بدون هزینه و بدون هوش مصنوعیِ ابری. برنامه‌ی روزانه بر اساس زمان شما، اشتباه‌های پرتکرار و واژه‌هایی که باید مرور شوند ساخته می‌شود.', 'block muted'),
-      fa('تمرین‌ها بیشتر به هلندی هستند؛ توضیح فارسی هر جا لازم باشد نمایش داده می‌شود و می‌توانید آن را در تنظیمات خاموش کنید.', 'block muted')),
+    card(h('p', {}, 'Deze app helpt je van A2/B1 naar vlot spreken op B2-niveau.'),
+      enHelp('Everything runs on this device: no account, no costs and no cloud AI. Each day the plan is built from your available time, your recurring mistakes and the words that are due.', 'block muted'),
+      enHelp('Exercises are in Dutch. English help appears where it is useful; you can switch it off in Settings.', 'block muted')),
     card(h('h3', {}, 'Zo werkt het'), h('ul', {},
       h('li', {}, 'Elke dag kies je hoeveel tijd je hebt. De app stelt een sessie samen: herhalen, luisteren, grammatica en vooral spreken.'),
       h('li', {}, 'Alles draait op je eigen toestel. Geen account, geen kosten, geen AI-dienst.'),
@@ -226,7 +226,7 @@ route('diagnostic', (root) => {
       h('div', { class: 'row end' }, btn('Leerplan bekijken', () => go('plan'), 'ghost'), btn('Naar Vandaag', () => go('today'), 'primary')));
   }
   const introCard = card(h('p', {}, 'Vier onderdelen: grammatica (12 vragen), woordenschat (8), luisteren (2 korte dialogen) en een gesproken interview (3 vragen). De vragen passen zich aan je antwoorden aan.'),
-      faHelp('چهار بخش: دستور زبان، واژگان، شنیداری و یک مصاحبه‌ی کوتاه گفتاری. سؤال‌ها بر اساس پاسخ‌های شما آسان‌تر یا سخت‌تر می‌شوند. نتیجه فقط یک برآورد است، نه مدرک رسمی.', 'block muted'),
+      enHelp('The result is an estimate, not an official certificate.', 'block muted'),
       h('div', { class: 'row end' }, btn('Annuleren', () => go('today'), 'ghost'), btn('Begin', () => { introCard.remove(); grammar(); }, 'primary')));
   append(root, h('h1', {}, 'Niveaubepaling'), introCard, body);
 });

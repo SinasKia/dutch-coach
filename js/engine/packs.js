@@ -53,8 +53,7 @@ export function validatePack(pack) {
 
   (pack.vocab || []).forEach((v, i) => {
     if (!checkId('vocab', v, i)) return;
-    need('vocab', v, ['nl', 'fa', 'ex']); checkLevel('vocab', v);
-    if (!v.en) warnings.push(`vocab "${v.id}": geen Engelse uitleg.`);
+    need('vocab', v, ['nl', 'en', 'ex']); checkLevel('vocab', v);
   });
 
   (pack.grammar || []).forEach((g, i) => {

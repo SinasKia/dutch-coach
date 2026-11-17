@@ -1,8 +1,8 @@
 // Screens: Speak, Listen, Vocabulary, Progress, More (Grammar, Missions, Learning plan, Settings).
-import { h, append, clear, fa, btn, card, pill, toast, modal, confirmBox, bar, mins, dateNL } from './ui.js';
+import { h, append, clear, en, btn, card, pill, toast, modal, confirmBox, bar, mins, dateNL } from './ui.js';
 import { S, save, logActivity, markDone, recordPattern, syncHosted, installPack, removePack, checkImport, exportData, importData, wipe } from './store.js';
 import { route, go } from './router.js';
-import { runExercises, runReview, runListening, runConversation, runProduction, drillFor, faHelp, audioBtn, vocabCardView, vocabExercise, say, answerInput } from './activities.js';
+import { runExercises, runReview, runListening, runConversation, runProduction, drillFor, enHelp, audioBtn, vocabCardView, vocabExercise, say, answerInput } from './activities.js';
 import { tts, stt, recorder } from './speech.js';
 import { MODES } from './engine/conversation.js';
 import { SKILLS } from './engine/packs.js';
@@ -39,7 +39,7 @@ route('speak', (root) => {
       h('p', {}, 'Je gesprekspartner is gescript: de app herkent trefwoorden in je antwoord en kiest daarmee het vervolg van het gesprek, of accepteert een open antwoord als het lang genoeg is. Er draait geen AI-model, dus de partner begrijpt de inhoud van je antwoord niet echt en kan geen volledig vrij gesprek voeren.'),
       h('p', {}, 'Spraakherkenning komt van je browser (Chrome op Android); die heeft meestal internet nodig. Typen kan altijd. De herkende tekst kun je aanpassen voordat je hem verstuurt.'),
       h('p', {}, 'Je uitspraak wordt niet beoordeeld: uit een transcript valt dat niet betrouwbaar af te leiden. Gebruik shadowing (Luisteren) om je eigen opname met het voorbeeld te vergelijken.'),
-      faHelp('طرف گفت‌وگو از پیش نوشته شده است: برنامه کلیدواژه‌ها را در پاسخ شما تشخیص می‌دهد و ادامه‌ی گفت‌وگو را انتخاب می‌کند. هیچ مدل هوش مصنوعی در کار نیست و تلفظ شما هم نمره‌دهی نمی‌شود.', 'block muted')));
+      enHelp('The conversation partner is scripted: the app looks for keywords in your answer and picks the next line. No AI model is involved, and your pronunciation is not scored.', 'block muted')));
 });
 route('scenario', (root, id, params) => {
   const s = S.content.byId[id];
@@ -82,15 +82,15 @@ route('vocab', (root) => {
   };
   const drawList = () => {
     const q = vocabQuery.toLowerCase();
-    const items = S.content.vocab.filter((v) => (vocabFilter === 'all' || status(S.cards[v.id]) === vocabFilter) && (!q || v.nl.toLowerCase().includes(q) || v.fa.includes(q) || (v.en || '').toLowerCase().includes(q)));
+    const items = S.content.vocab.filter((v) => (vocabFilter === 'all' || status(S.cards[v.id]) === vocabFilter) && (!q || v.nl.toLowerCase().includes(q) || (v.en || '').toLowerCase().includes(q)));
     append(clear(body), h('p', { class: 'muted small' }, `${items.length} uitdrukkingen`), h('div', { class: 'list' }, items.slice(0, 150).map((v) => h('button', { class: 'item', onclick: () => modal((close) => [vocabCardView(v), h('div', { class: 'row end' }, btn('Sluiten', close, 'primary'))]) },
-      h('div', {}, h('b', { lang: 'nl' }, v.nl), h('p', { class: 'small' }, fa(v.fa))), h('div', { class: 'row' }, pill(v.cefr), pill(names[status(S.cards[v.id])], status(S.cards[v.id]) === 'mastered' ? 'ok' : status(S.cards[v.id]) === 'difficult' ? 'bad' : ''))))));
+      h('div', {}, h('b', { lang: 'nl' }, v.nl), h('p', { class: 'small muted' }, en(v.en))), h('div', { class: 'row' }, pill(v.cefr), pill(names[status(S.cards[v.id])], status(S.cards[v.id]) === 'mastered' ? 'ok' : status(S.cards[v.id]) === 'difficult' ? 'bad' : ''))))));
   };
   append(root, h('h1', {}, 'Woorden en uitdrukkingen'),
     card(h('div', { class: 'stats' }, Object.keys(names).map((k) => h('div', { class: 'stat' }, h('b', {}, counts[k]), h('span', {}, names[k])))),
       h('div', { class: 'row wrap' }, btn(`Herhaal nu (${due})`, () => start({ reviewN: 40, newN: 0 }), due ? 'primary' : 'ghost'), btn('Leer 5 nieuwe', () => start({ reviewN: 0, newN: 5 }), due ? 'ghost' : 'primary'), btn('Snelle quiz', quiz, 'ghost')),
       h('p', { class: 'muted small' }, '“Beheerst” betekent: je hebt het over langere tijd steeds goed opgehaald (FSRS-planning), niet: je hebt de kaart vaak gezien.')),
-    h('input', { class: 'text', type: 'search', placeholder: 'Zoek in Nederlands, Perzisch of Engels', 'aria-label': 'Zoeken', value: vocabQuery, oninput: (e) => { vocabQuery = e.target.value; drawList(); } }),
+    h('input', { class: 'text', type: 'search', placeholder: 'Zoek in het Nederlands of Engels', 'aria-label': 'Zoeken', value: vocabQuery, oninput: (e) => { vocabQuery = e.target.value; drawList(); } }),
     h('div', { class: 'row wrap' }, [['all', 'Alles'], ...Object.entries(names)].map(([k, l]) => h('button', { class: `chip ${vocabFilter === k ? 'on' : ''}`, onclick: () => { vocabFilter = k; go('vocab'); } }, l))),
     body);
   drawList();
@@ -161,7 +161,7 @@ route('lesson', (root, id) => {
   const practice = () => runExercises(body, drillFor(g.skill, 8, g.id), { title: g.title, onDone: (r) => { logActivity('grammar', r.sec, g.id, { correct: r.correct, total: r.total }); markDone(g.id); toast(`${r.correct} van ${r.total} goed`); intro(true); } });
   const intro = (after) => append(clear(body),
     card(h('p', { class: 'muted small' }, '1 · Voorbeeld'), h('p', { class: 'sentence big', lang: 'nl' }, g.example, ' ', audioBtn(g.example))),
-    card(h('p', { class: 'muted small' }, '2 · Uitleg'), h('p', {}, g.explain), faHelp(g.explainFa, 'block muted')),
+    card(h('p', { class: 'muted small' }, '2 · Uitleg'), h('p', {}, g.explain), enHelp(g.explainEn, 'block muted')),
     (g.mistakes || []).length > 0 && card(h('p', { class: 'muted small' }, '3 · Typische fouten'), g.mistakes.map((m) => h('div', { class: 'issue' }, h('p', {}, h('s', { lang: 'nl' }, m.wrong)), h('p', {}, h('b', { lang: 'nl' }, m.right)), h('p', { class: 'muted small' }, m.why)))),
     card(h('p', { class: 'muted small' }, '4 · Oefenen'), h('p', {}, `${g.items.length} oefenzinnen; de app kiest er acht en begint met zinnen die je eerder fout had.`), btn(after ? 'Nog een ronde' : 'Start oefening', practice, after ? 'ghost' : 'primary')),
     (g.produce || []).length > 0 && card(h('p', { class: 'muted small' }, '5 · Zelf zinnen maken'), h('p', {}, g.produce[0].prompt), btn('Proberen', () => runProduction(body, g.produce[0], { onDone: () => intro(true) }), 'ghost')),
@@ -199,9 +199,9 @@ route('mission', (root, id) => {
   };
   const prev = S.done[m.id];
   append(root, back('missions'), h('div', { class: 'row between' }, h('h1', {}, m.title), pill(m.cefr)),
-    h('p', {}, m.goal), faHelp(m.goalFa, 'block muted'),
+    h('p', {}, m.goal), enHelp(m.goalEn, 'block muted'),
     prev?.completed && h('p', { class: 'note' }, `Bevestigd op ${dateNL(prev.last)}. Je kunt de missie zo vaak herhalen als je wilt.`),
-    card(h('h3', {}, '1 · Handige zinnen'), m.phrases.map((p) => h('div', { class: 'line' }, h('div', { class: 'row between' }, h('span', { lang: 'nl' }, p.nl), audioBtn(p.nl)), faHelp(p.fa, 'block muted small')))),
+    card(h('h3', {}, '1 · Handige zinnen'), m.phrases.map((p) => h('div', { class: 'line' }, h('div', { class: 'row between' }, h('span', { lang: 'nl' }, p.nl), audioBtn(p.nl)), enHelp(p.en, 'block muted small')))),
     (m.responses || []).length > 0 && card(h('h3', {}, '2 · Wat je kunt terughoren'), m.responses.map((r) => h('div', { class: 'row between line' }, h('span', { lang: 'nl' }, r), audioBtn(r)))),
     m.scenario && S.content.byId[m.scenario] && card(h('h3', {}, '3 · Eerst oefenen'), h('p', { class: 'muted' }, `Rollenspel: ${S.content.byId[m.scenario].title}`), btn('Oefen het gesprek', () => { if (!S.done[m.id]) markDone(m.id, { completed: false }); go(`scenario/${m.scenario}?mode=guided&from=mission/${m.id}`); }, 'ghost')),
     card(h('h3', {}, '4 · Doe het echt'), h('p', { class: 'muted' }, 'Ga het doen in het echte leven. Kom daarna terug en vertel hoe het ging.'), btn('Ik heb het gedaan', report, 'primary')), body);
@@ -214,7 +214,7 @@ route('plan', (root) => append(root, back('more'), h('h1', {}, 'Leerplan: van A2
     h('p', { class: 'muted small' }, `De verdeling verschuift automatisch bij veel openstaande herhalingen of terugkerende fouten. Weekdoel: ${S.settings.weeklyHours} uur.`)),
   STAGES.map((st) => { const cur = st.n === S.profile.stage; const crit = stageCriteria(st.n, { skills: S.skills, log: S.log });
     return h('details', { class: `card ${cur ? 'current' : ''}`, open: cur || null }, h('summary', {}, h('b', {}, `Fase ${st.n} · ${st.title} `), st.n < S.profile.stage ? pill('afgerond', 'ok') : cur ? pill('nu') : null),
-      h('p', {}, st.goal), faHelp(st.fa, 'block muted small'), h('p', { class: 'small' }, h('b', {}, 'Criteria om door te gaan:')),
+      h('p', {}, st.goal), h('p', { class: 'small' }, h('b', {}, 'Criteria om door te gaan:')),
       h('ul', { class: 'checklist' }, crit.map((c) => h('li', { class: c.done ? 'done' : '' }, h('span', {}, c.done ? '✓' : '○'), h('div', {}, c.label, cur && h('p', { class: 'muted small' }, c.detail)))))); })));
 
 /* ============================ Settings ============================ */
@@ -248,8 +248,8 @@ route('settings', (root) => {
       h('label', { class: 'field' }, 'Nieuwe uitdrukkingen per dag', sel('newPerDay', [[3, '3'], [6, '6'], [10, '10'], [15, '15']]))),
     card(h('h3', {}, 'Weergave en taal'),
       h('label', { class: 'field' }, 'Thema', sel('theme', [['auto', 'Volg toestel'], ['light', 'Licht'], ['dark', 'Donker']])),
-      h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: S.settings.persianHelp, onchange: (e) => set('persianHelp', e.target.checked) }), ' Perzische uitleg tonen ', fa('(توضیح فارسی)')),
-      h('p', { class: 'muted small' }, 'Zet dit uit zodra je de uitleg in het Nederlands kunt volgen. Woordbetekenissen blijven in het Perzisch.')),
+      h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: S.settings.englishHelp !== false, onchange: (e) => set('englishHelp', e.target.checked) }), ' Engelse hulp tonen'),
+      h('p', { class: 'muted small' }, 'Zet dit uit zodra je de uitleg in het Nederlands kunt volgen. Woordbetekenissen blijven in het Engels.')),
     card(h('h3', {}, 'Spraak'),
       h('label', { class: 'field' }, 'Spreeksnelheid', sel('rate', [[0.8, 'Langzaam'], [0.9, 'Rustig'], [1, 'Normaal'], [1.1, 'Vlot'], [1.2, 'Snel']])),
       h('ul', { class: 'small' },

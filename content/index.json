@@ -1,9 +1,9 @@
 {
-  "updated": "2026-11-15",
+  "updated": "2026-11-17",
   "packs": [
-    { "id": "core-vocab", "file": "core-vocab.json", "version": "1.0.0" },
-    { "id": "core-grammar", "file": "core-grammar.json", "version": "1.0.0" },
-    { "id": "core-listening", "file": "core-listening.json", "version": "1.0.0" },
-    { "id": "core-speaking", "file": "core-speaking.json", "version": "1.0.0" }
+    { "id": "core-vocab", "file": "core-vocab.json", "version": "1.1.0" },
+    { "id": "core-grammar", "file": "core-grammar.json", "version": "1.1.0" },
+    { "id": "core-listening", "file": "core-listening.json", "version": "1.1.0" },
+    { "id": "core-speaking", "file": "core-speaking.json", "version": "1.1.0" }
   ]
 }

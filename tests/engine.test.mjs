@@ -78,7 +78,7 @@ test('exercises: generator templates build correct Dutch word order', () => {
 test('exercises: vocabulary exercises and drills', () => {
   const v = content.vocab[0];
   const rec = vocabExercise(v, content.vocab, 'recognize', rng(5));
-  assert.equal(rec.options.length, 4); assert.equal(rec.options[rec.answer], v.fa);
+  assert.equal(rec.options.length, 4); assert.equal(rec.options[rec.answer], v.en);
   const recall = vocabExercise(v, content.vocab, 'recall');
   assert.ok(grade(recall, v.nl).ok);
   const items = content.items.filter((i) => i.skill === 'inversion');
@@ -118,7 +118,7 @@ test('packs: import checks, versions and duplicate detection', () => {
   assert.equal(compareVersions('1.2.0', '1.10.0'), -1);
   assert.equal(validatePack({ format: 'x' }).ok, false);
   const extra = { format: 'dutch-coach-pack', formatVersion: 1, id: 'extra-test', version: '1.0.0', title: 'Test',
-    vocab: [{ id: 'v-new', nl: 'de fietsenmaker', fa: 'تعمیرکار دوچرخه', en: 'bike repair shop', cefr: 'A2', ex: 'Ik breng mijn fiets naar de fietsenmaker.' }, { id: 'v-dup', nl: 'Dat klopt.', fa: 'درست است', en: 'x', cefr: 'A2', ex: 'Dat klopt.' }] };
+    vocab: [{ id: 'v-new', nl: 'de fietsenmaker', en: 'bike repair shop', cefr: 'A2', ex: 'Ik breng mijn fiets naar de fietsenmaker.' }, { id: 'v-dup', nl: 'Dat klopt.', en: "that's right", cefr: 'A2', ex: 'Dat klopt.' }] };
   const r = importCheck(extra, packs);
   assert.ok(r.ok); assert.equal(r.action, 'install'); assert.equal(r.duplicates.length, 1);
   const merged = mergePacks([...packs, extra]);

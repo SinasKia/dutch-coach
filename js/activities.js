@@ -1,7 +1,7 @@
 // Reusable learning activities: exercise runner, spaced-repetition review, listening/shadowing,
 // conversation studio and conversation feedback. Each takes a root element and an onDone callback,
 // so it works both inside a planned session and on its own.
-import { h, append, clear, fa, icon, btn, card, pill, toast, modal, bar } from './ui.js';
+import { h, append, clear, en, icon, btn, card, pill, toast, modal, bar } from './ui.js';
 import { S, save, logActivity, recordAnswer, recordPattern, markDone, saveCustomVocab } from './store.js';
 import { tts, stt, recorder, STT_ERRORS } from './speech.js';
 import { grade, buildDrill, vocabExercise } from './engine/exercises.js';
@@ -13,7 +13,8 @@ import { shuffle } from './engine/text.js';
 
 const elapsed = (t0, capMin = 30) => Math.min((Date.now() - t0) / 1000, capMin * 60);
 export const say = (text, { slow = false, pitch = 1 } = {}) => tts.speak(text, { rate: (S.settings.rate || 1) * (slow ? 0.7 : 1), pitch });
-export const faHelp = (text, cls = '') => (text && S.settings.persianHelp ? fa(text, cls) : null);
+/** Optional English help; hidden when "English help" is switched off in Settings. */
+export const enHelp = (text, cls = '') => (text && S.settings.englishHelp !== false ? en(text, cls) : null);
 
 export function audioBtn(text, { label = 'Luister', slow = true, pitch = 1 } = {}) {
   return h('span', { class: 'audio' },
@@ -27,7 +28,7 @@ export function ensureMic() {
   return new Promise((res) => modal((close) => [
     h('h3', {}, 'Microfoon gebruiken?'),
     h('p', {}, 'Spraakherkenning wordt geleverd door je browser (bijv. Chrome). Je stem wordt daarvoor meestal naar de spraakdienst van de browsermaker gestuurd en omgezet in tekst. Deze app slaat alleen de tekst op, op dit toestel. Opnames voor shadowing blijven in het geheugen en worden nergens bewaard of verstuurd.'),
-    fa('تشخیص گفتار را مرورگر شما (مثلاً Chrome) انجام می‌دهد و صدا معمولاً برای تبدیل به متن به سرویس گفتار سازنده‌ی مرورگر فرستاده می‌شود. این برنامه فقط متن را روی همین دستگاه نگه می‌دارد. همیشه می‌توانید به‌جای صحبت، تایپ کنید.', 'block muted'),
+    enHelp('Speech recognition is done by your browser (e.g. Chrome), which usually sends your voice to its speech service to turn it into text. This app only keeps the text, on this device. You can always type instead.', 'block muted small'),
     h('div', { class: 'row end' },
       btn('Nee, ik typ liever', () => { close(); res(false); }, 'ghost'),
       btn('Toestaan', () => { S.settings.micConsent = true; save('settings'); close(); res(true); }, 'primary')),
@@ -86,16 +87,16 @@ export function runExercises(root, exercises, { onDone, onAnswer, record = true,
       if (record) recordAnswer(ex, ok, typeof given === 'number' ? ex.options[given] : g.given, g.expected);
       onAnswer?.(ex, ok);
       body.querySelectorAll('button, input').forEach((b) => { b.disabled = true; });
-      const full = ex.kind === 'choice' && ex.prompt.includes('___') ? ex.prompt.replace(/_{3,}/, g.expected) : ex.kind !== 'choice' && ex.prompt.includes('___') ? ex.prompt.replace(/_{3,}/, g.expected).replace(/\s*\([^)]*\)\s*$/, '') : ex.optionsFa ? ex.sub : g.expected;
+      const full = ex.kind === 'choice' && ex.prompt.includes('___') ? ex.prompt.replace(/_{3,}/, g.expected) : ex.kind !== 'choice' && ex.prompt.includes('___') ? ex.prompt.replace(/_{3,}/, g.expected).replace(/\s*\([^)]*\)\s*$/, '') : ex.optionsEn ? ex.sub : g.expected;
       append(clear(fb), h('div', { class: `result ${ok ? 'ok' : 'bad'}` },
         h('strong', {}, g.ok ? 'Goed!' : g.close ? 'Bijna goed — let op de spelling.' : 'Nog niet goed.'),
-        !g.ok && h('p', {}, 'Goed antwoord: ', ex.optionsFa ? fa(g.expected) : h('b', { lang: 'nl' }, g.expected)),
+        !g.ok && h('p', {}, 'Goed antwoord: ', ex.optionsEn ? en(g.expected) : h('b', { lang: 'nl' }, g.expected)),
         ex.why && h('p', { class: 'muted' }, ex.why),
         h('div', { class: 'row between' }, audioBtn(full, { slow: false }), btn(i + 1 < exercises.length ? 'Verder' : 'Klaar', next, 'primary'))));
       fb.querySelector('.btn.primary').focus();
     };
     if (ex.kind === 'choice') {
-      ex.options.forEach((o, idx) => body.append(h('button', { class: 'option', onclick: (e) => { e.currentTarget.classList.add(idx === ex.answer ? 'right' : 'wrong'); if (idx !== ex.answer) body.children[ex.answer].classList.add('right'); done(idx); } }, ex.optionsFa ? fa(o) : o)));
+      ex.options.forEach((o, idx) => body.append(h('button', { class: 'option', onclick: (e) => { e.currentTarget.classList.add(idx === ex.answer ? 'right' : 'wrong'); if (idx !== ex.answer) body.children[ex.answer].classList.add('right'); done(idx); } }, ex.optionsEn ? en(o) : o)));
     } else if (ex.kind === 'order') {
       const picked = [];
       const line = h('div', { class: 'build', 'aria-label': 'Jouw zin' }), bank = h('div', { class: 'bank' });
@@ -119,7 +120,7 @@ export function runExercises(root, exercises, { onDone, onAnswer, record = true,
       bar(i, exercises.length, 'Voortgang'),
       h('h2', { class: 'prompt' }, ex.prompt),
       ex.sub && h('p', { class: 'sentence', lang: 'nl' }, ex.sub),
-      ex.subFa && fa(ex.subFa, 'block big'),
+      ex.subEn && en(ex.subEn, 'block big'),
       body, fb);
   }
   show();
@@ -135,11 +136,10 @@ export function drillFor(skill, n = 6, lessonId) {
 }
 
 /* ====================== Vocabulary review (FSRS) ====================== */
-export function vocabCardView(v, { showFa = true } = {}) {
+export function vocabCardView(v, { showMeaning = true } = {}) {
   return h('div', { class: 'vcard' },
     h('div', { class: 'row between' }, h('h2', { lang: 'nl' }, v.nl), audioBtn(v.nl)),
-    showFa && fa(v.fa, 'block big'),
-    v.en && h('p', { class: 'muted' }, v.en),
+    showMeaning && en(v.en, 'block big'),
     h('p', { class: 'sentence', lang: 'nl' }, v.ex, ' ', audioBtn(v.ex, { slow: false })),
     v.ctx && h('p', { class: 'small' }, h('b', {}, 'Gebruik: '), v.ctx),
     (v.col || []).length > 0 && h('p', { class: 'small' }, h('b', {}, 'Combinaties: '), v.col.join(' · ')),
@@ -173,7 +173,7 @@ export function runReview(root, { reviewN = 20, newN = 0, onDone } = {}) {
     const back = h('div', {});
     const reveal = () => {
       say(v.nl);
-      append(clear(back), vocabCardView(v, { showFa: false }),
+      append(clear(back), vocabCardView(v, { showMeaning: false }),
         h('p', { class: 'muted small' }, 'Hoe goed wist je het? Wees eerlijk — dit bepaalt wanneer de kaart terugkomt.'),
         h('div', { class: 'grades' },
           btn('Opnieuw', () => applyGrade(q, v, 1), 'g1'), btn('Moeilijk', () => applyGrade(q, v, 2), 'g2'),
@@ -181,7 +181,7 @@ export function runReview(root, { reviewN = 20, newN = 0, onDone } = {}) {
     };
     append(root, head, card(
       h('p', { class: 'muted small' }, 'Zeg het hardop in het Nederlands. Tik daarna op “Toon antwoord”.'),
-      fa(v.fa, 'block big'), v.en && h('p', { class: 'muted' }, v.en), v.ctx && h('p', { class: 'small muted' }, v.ctx),
+      en(v.en, 'block big'), v.ctx && h('p', { class: 'small muted' }, v.ctx),
       back), h('div', { class: 'row end' }, btn('Toon antwoord', (e) => { e.currentTarget.remove(); reveal(); }, 'primary')));
   }
   function applyGrade(q, v, g, known = false) {
@@ -202,7 +202,7 @@ export function runListening(root, d, { onDone, shadow = true, test = false } = 
   const t0 = Date.now();
   const speakers = [...new Set(d.lines.map((l) => l.sp))];
   const pitchOf = (sp) => [1, 0.75, 1.25][speakers.indexOf(sp) % 3];
-  let playing = false, step = 'listen', answers = [], showText = false, showFa = false, plays = 0;
+  let playing = false, step = 'listen', answers = [], showText = false, showEn = false, plays = 0;
   const playAll = async (slow) => {
     if (playing) { playing = false; tts.stop(); return render(); }
     playing = true; plays += 1; render();
@@ -213,7 +213,7 @@ export function runListening(root, d, { onDone, shadow = true, test = false } = 
     h('div', { class: 'row between' }, h('span', { class: 'speaker' }, l.sp), h('span', { class: 'row' }, audioBtn(l.nl, { pitch: pitchOf(l.sp) }),
       h('button', { class: 'icon-btn', title: 'Bewaar als woordkaart', 'aria-label': 'Bewaar als woordkaart', onclick: () => saveFrom(l.nl) }, icon('save', 18)))),
     showText ? h('p', { lang: 'nl' }, l.nl) : h('p', { class: 'muted' }, '•••'),
-    showText && showFa && l.fa && fa(l.fa, 'block muted'))));
+    showText && showEn && l.en && en(l.en, 'block muted'))));
   function finish() {
     tts.stop();
     const correct = answers.filter((a, i) => a === d.questions[i].a).length;
@@ -246,10 +246,10 @@ export function runListening(root, d, { onDone, shadow = true, test = false } = 
         } }, o)));
     } else if (step === 'review') {
       const correct = answers.filter((a, i) => a === d.questions[i].a).length;
-      const hasFa = d.lines.some((l) => l.fa);
+      const hasEn = d.lines.some((l) => l.en);
       append(root, card(h('h3', {}, `${correct} van de ${d.questions.length} vragen goed`),
         h('p', { class: 'muted' }, 'Lees en luister nu mee met de tekst. Bewaar uitdrukkingen die je wilt onthouden.'),
-        hasFa && S.settings.persianHelp && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: showFa, onchange: (e) => { showFa = e.target.checked; render(); } }), ' Perzische vertaling ernaast'),
+        hasEn && S.settings.englishHelp !== false && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: showEn, onchange: (e) => { showEn = e.target.checked; render(); } }), ' Engelse vertaling ernaast'),
         transcript()),
         h('div', { class: 'row end' }, btn('Klaar', finish, 'ghost'), shadow && btn('Shadowing oefenen', () => { step = 'shadow'; render(); }, 'primary')));
     } else {
@@ -262,7 +262,7 @@ async function saveFrom(nl) {
   const meaning = window.prompt(`Bewaar als woordkaart:
 “${nl}”
 
-Wat betekent het? (Perzisch of Engels)`, "");
+Wat betekent het? (in het Engels of Nederlands)`, "");
   if (meaning === null) return;
   toast((await saveCustomVocab(nl, meaning, nl)) ? 'Bewaard in “Mijn eigen woorden”.' : 'Deze uitdrukking staat al in je lijst.');
 }
@@ -285,7 +285,7 @@ function shadowView(root, lines, pitchOf, onDone) {
     }, 'ghost');
     append(root, h('p', { class: 'muted small' }, `Shadowing · zin ${i + 1} / ${lines.length}`),
       card(h('p', { class: 'small muted' }, 'Luister, en zeg de zin direct na — zelfde tempo, zelfde melodie. Neem jezelf op en vergelijk op het gehoor. De app beoordeelt je uitspraak niet.'),
-        h('p', { class: 'sentence big', lang: 'nl' }, l.nl), l.fa && faHelp(l.fa, 'block muted'),
+        h('p', { class: 'sentence big', lang: 'nl' }, l.nl), l.en && enHelp(l.en, 'block muted'),
         h('div', { class: 'row' }, btn('Voorbeeld', () => say(l.nl, { pitch: pitchOf(l.sp) }), 'primary'), btn('Langzaam', () => say(l.nl, { slow: true, pitch: pitchOf(l.sp) }), 'ghost'), recBtn),
         status, mine),
       h('div', { class: 'row end' }, btn('Stoppen', () => { i = lines.length; draw(); }, 'ghost'), btn(i + 1 < lines.length ? 'Volgende zin' : 'Klaar', () => { if (url) URL.revokeObjectURL(url); url = null; i += 1; draw(); }, 'primary')));
@@ -349,7 +349,7 @@ export function runConversation(root, scenario, mode, { onDone } = {}) {
   }
   clear(root);
   append(root, h('div', { class: 'row between' }, h('h2', {}, scenario.title), pill(M.label)),
-    h('p', { class: 'setting' }, scenario.setting), faHelp(scenario.settingFa, 'block muted small'),
+    h('p', { class: 'setting' }, scenario.setting), enHelp(scenario.settingEn, 'block muted small'),
     mode === 'challenge' && h('p', { class: 'note' }, 'Uitdaging: er gebeurt iets onverwachts. Blijf in het Nederlands en los het op.'),
     !stt.supported && h('p', { class: 'warn' }, 'Spraakherkenning werkt niet in deze browser. Zeg je antwoord hardop en typ het daarna in. In Chrome op Android kun je wel inspreken.'),
     chat, dock);

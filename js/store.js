@@ -34,7 +34,7 @@ const idb = {
 };
 
 const DEFAULTS = {
-  settings: { theme: 'auto', weeklyHours: 6, restDays: [0], rate: 1, persianHelp: true, micConsent: false, newPerDay: 6, load: 0, ai: { enabled: false, provider: 'none' } },
+  settings: { theme: 'auto', weeklyHours: 6, restDays: [0], rate: 1, englishHelp: true, micConsent: false, newPerDay: 6, load: 0, ai: { enabled: false, provider: 'none' } },
   profile: { onboarded: false, stage: 1, levels: {}, diagnostics: [], confidence: [] },
   skills: {}, errors: {}, done: {}, cards: {},
 };
@@ -47,10 +47,21 @@ export async function init() {
   S.log = await idb.all('log');
   S.packs = await idb.all('packs');
   S.hostedOrder = (await idb.get('kv', 'hostedOrder')) || [];
+  await migrate();
   navigator.storage?.persist?.().catch(() => {});
   rebuild();
   // First run needs the bundled packs; later runs refresh in the background (never blocks startup).
   if (!S.packs.length) await syncHosted(); else syncHosted().catch(() => {});
+}
+
+/** v1.1: Persian help was replaced by English. Saved words keep the meaning you typed. */
+async function migrate() {
+  if ('persianHelp' in S.settings) { S.settings.englishHelp = S.settings.persianHelp; delete S.settings.persianHelp; await save('settings'); }
+  const personal = S.packs.find((p) => p.id === 'personal');
+  if (personal && personal.vocab.some((v) => 'fa' in v)) {
+    personal.vocab = personal.vocab.map(({ fa, ...v }) => ({ ...v, en: v.en || fa || '—' }));
+    await idb.put('packs', personal);
+  }
 }
 
 function rebuild() {
@@ -95,10 +106,10 @@ export async function removePack(id) {
 export const checkImport = (pack) => importCheck(pack, S.packs);
 
 /** Save an expression from a conversation or transcript into the personal pack. */
-export async function saveCustomVocab(nl, faText, ex) {
+export async function saveCustomVocab(nl, meaning, ex) {
   const personal = S.packs.find((p) => p.id === 'personal') || { format: 'dutch-coach-pack', formatVersion: 1, id: 'personal', version: '1.0.0', title: 'Mijn eigen woorden', vocab: [] };
   if (personal.vocab.some((v) => v.nl.toLowerCase() === nl.toLowerCase()) || S.content.vocabKeys.has(nl.toLowerCase())) return false;
-  personal.vocab.push({ id: `p-${Date.now()}`, nl, fa: faText || '—', cefr: 'B1', topic: 'eigen woorden', reg: 'neutraal', ex: ex || nl, ctx: 'Zelf bewaard.' });
+  personal.vocab.push({ id: `p-${Date.now()}`, nl, en: meaning || '—', cefr: 'B1', topic: 'eigen woorden', reg: 'neutraal', ex: ex || nl, ctx: 'Zelf bewaard.' });
   await installPack(personal, 'personal');
   return true;
 }

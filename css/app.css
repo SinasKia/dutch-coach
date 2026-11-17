@@ -30,8 +30,7 @@ li { margin: .2rem 0; }
 a { color: var(--brand); }
 s { color: var(--bad); }
 .muted { color: var(--muted); } .small { font-size: .875rem; } .big { font-size: 1.2rem; } .center { text-align: center; } .block { display: block; margin: .35rem 0; }
-.fa { font-family: Vazirmatn, "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, system-ui, sans-serif; line-height: 1.9; unicode-bidi: isolate; }
-.fa.block { text-align: right; }
+.en { unicode-bidi: isolate; }
 
 .top { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem 1rem; padding-top: calc(.6rem + env(safe-area-inset-top)); background: var(--bg); border-bottom: 1px solid var(--line); }
 .brand { font-weight: 700; color: var(--brand); text-decoration: none; letter-spacing: -.01em; }

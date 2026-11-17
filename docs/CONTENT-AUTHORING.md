@@ -30,18 +30,18 @@ Every section is optional, but a pack needs at least one item. `cefr` is `A1`–
 ### vocab
 
 ```json
-{"id":"v-de-deadline","nl":"de deadline halen","fa":"به ضرب‌الاجل رسیدن","en":"to meet the deadline",
+{"id":"v-de-deadline","nl":"de deadline halen","en":"to meet the deadline",
  "cefr":"B1","stage":3,"topic":"werk","reg":"neutraal",
  "ex":"We halen de deadline alleen als iedereen meehelpt.",
  "ctx":"Op het werk.","col":["de deadline missen"],"rel":["op tijd af zijn"],"alt":["deadline halen"]}
 ```
-Required: `id`, `nl`, `fa`, `ex`, `cefr`. `alt` lists other accepted answers for typed recall. Teach chunks, not isolated words.
+Required: `id`, `nl`, `en` (English meaning), `ex`, `cefr`. `alt` lists other accepted answers for typed recall. Teach chunks, not isolated words.
 
 ### grammar
 
 ```json
 {"id":"g-x","title":"…","cefr":"B1","stage":2,"skill":"subclause",
- "example":"…","explain":"short Dutch explanation","explainFa":"optional Persian",
+ "example":"…","explain":"short Dutch explanation","explainEn":"optional English",
  "mistakes":[{"wrong":"…","right":"…","why":"…"}],
  "items":[ … at least 3 … ],
  "produce":[{"prompt":"…","model":"…"}]}
@@ -69,7 +69,7 @@ Rules that keep generated sentences grammatical:
 
 ```json
 {"id":"d-x","title":"…","cefr":"B1","stage":2,"topic":"…",
- "lines":[{"sp":"Anna","nl":"…","fa":"optional"}],
+ "lines":[{"sp":"Anna","nl":"…","en":"optional English"}],
  "questions":[{"q":"…","options":["…","…","…"],"a":0}]}
 ```
 Write original text. Do not copy news articles, podcasts or media transcripts.
@@ -78,7 +78,7 @@ Write original text. Do not copy news articles, podcasts or media transcripts.
 
 ```json
 {"id":"s-x","title":"…","type":"roleplay","cefr":"B1","stage":2,"tags":["subclause"],
- "setting":"…","settingFa":"optional","start":"start",
+ "setting":"…","settingEn":"optional","start":"start",
  "nodes":{
    "start":{"say":"partner line","hints":["…"],"model":"a natural answer",
             "expect":[{"any":["ja","graag"],"next":"n2"},{"any":["nee"],"next":"n3"}],
@@ -97,14 +97,14 @@ Write original text. Do not copy news articles, podcasts or media transcripts.
 
 ```json
 {"id":"m-x","title":"…","cefr":"B1","stage":2,"scenario":"s-x",
- "goal":"…","goalFa":"optional","phrases":[{"nl":"…","fa":"…"}],"responses":["what you may hear back"]}
+ "goal":"…","goalEn":"optional","phrases":[{"nl":"…","en":"…"}],"responses":["what you may hear back"]}
 ```
 
 ## Generating a pack with Claude Code
 
 Open this folder in Claude Code and use a prompt like:
 
-> Read `docs/CONTENT-AUTHORING.md` and two existing packs in `content/` for style. Create `content-drafts/<id>.json`: a dutch-coach-pack about **<topic>** at **<CEFR level>**, stage **<n>**, with **<e.g. 20 vocab chunks, 1 grammar lesson on <skill>, 2 dialogues, 2 scenarios, 1 mission>**. Netherlands Dutch, natural spoken register, original text only. Persian (`fa`) for vocabulary and A2 lines. Do not reuse ids or expressions that already exist in `content/`. Run `node tools/validate-pack.mjs` on the file and fix every error. Then list the items you are least sure about linguistically so I can review them.
+> Read `docs/CONTENT-AUTHORING.md` and two existing packs in `content/` for style. Create `content-drafts/<id>.json`: a dutch-coach-pack about **<topic>** at **<CEFR level>**, stage **<n>**, with **<e.g. 20 vocab chunks, 1 grammar lesson on <skill>, 2 dialogues, 2 scenarios, 1 mission>**. Netherlands Dutch, natural spoken register, original text only. English (`en`) for vocabulary meanings and A2 dialogue lines; Dutch everywhere else. Do not reuse ids or expressions that already exist in `content/`. Run `node tools/validate-pack.mjs` on the file and fix every error. Then list the items you are least sure about linguistically so I can review them.
 
 Then review, and import the file in the app.
 

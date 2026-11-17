@@ -13,7 +13,7 @@ const PREPS = ['in', 'op', 'bij', 'naar', 'met', 'van', 'voor', 'aan', 'uit', 'o
 // Common het-words: "de" + one of these is a reliable error ("de" is never a pronoun).
 const HET = new Set(('huis boek kind werk probleem jaar land water weer geld idee antwoord gesprek leven ding moment nummer station ziekenhuis kantoor bedrijf gebouw examen feest eten ontbijt brood bier glas bord mes bed raam dak verhaal gevoel doel plan voorbeeld woord verschil begin einde resultaat product contract salaris team project programma systeem internet nieuws bericht formulier paspoort rijbewijs ticket restaurant café hotel museum theater park strand centrum dorp gebied artikel onderwerp onderzoek onderwijs gedrag advies besluit recht gevaar geluk gezin lichaam hoofd been oog oor hart gezicht haar seizoen weekend uur kwartier meisje jongetje beetje stukje kopje toetje cadeau pakket apparaat scherm toestel vliegtuig schip dier paard varken schaap vlees fruit ijs zout papier hout plastic licht geluid lawaai spel lied concert festival publiek standpunt argument nadeel voordeel belang klimaat milieu').split(' '));
 const ZIJN_PP = 'gegaan|gekomen|geweest|gebleven|gebeurd|geworden|begonnen|gevallen|vertrokken|aangekomen|geboren|opgestaan|thuisgekomen';
-// Literal translations (English / Persian) and fixed prepositions. [pattern, suggestion, skill, kind]
+// Literal translations (mostly from English) and fixed prepositions. [pattern, suggestion, skill, kind]
 const PHRASES = [
   [/\bik ben (het )?(mee |er mee )?eens\b/, 'ik ben het ermee eens', 'literal'],
   [/\bik ben (niet )?akkoord\b/, 'ik ben het er (niet) mee eens', 'literal', 'style'],

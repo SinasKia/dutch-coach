@@ -1,6 +1,6 @@
 // Service worker: makes the app shell and lesson packs available offline.
 // Bump VERSION whenever app files change; the old cache is then replaced.
-const VERSION = 'dutch-coach-v1.0.0';
+const VERSION = 'dutch-coach-v1.1.0';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/app.js', 'js/screens.js', 'js/activities.js', 'js/router.js', 'js/store.js', 'js/ui.js', 'js/speech.js', 'js/ext/ai.js',

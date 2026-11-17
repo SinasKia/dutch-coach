@@ -17,7 +17,7 @@ export function variantCount(item) {
  * opts.hard: typed production instead of ordering blocks (used when the skill is already strong).
  */
 export function expand(item, { variant = 0, hard = false, rand = Math.random } = {}) {
-  const base = { id: `${item.id}#${variant}`, itemId: item.id, skill: item.skill, cefr: item.cefr, lessonId: item.lessonId, why: item.why, fa: item.fa };
+  const base = { id: `${item.id}#${variant}`, itemId: item.id, skill: item.skill, cefr: item.cefr, lessonId: item.lessonId, why: item.why };
   const build = (prompt, sub, chunks, answer) => hard
     ? { ...base, kind: 'type', prompt, sub, answers: [answer] }
     : { ...base, kind: 'order', prompt, sub, chunks: shuffleDifferent(chunks, rand), answers: [answer] };
@@ -62,9 +62,9 @@ function shuffleDifferent(chunks, rand) {
 /** Vocabulary exercises built from the vocabulary pool. */
 export function vocabExercise(v, pool, mode, rand = Math.random) {
   const base = { id: `${v.id}#${mode}`, itemId: v.id, skill: 'vocab', cefr: v.cefr, vocabId: v.id };
-  const others = shuffle(pool.filter((o) => o.id !== v.id && o.fa !== v.fa && o.nl !== v.nl), rand).slice(0, 3);
+  const others = shuffle(pool.filter((o) => o.id !== v.id && o.en !== v.en && o.nl !== v.nl), rand).slice(0, 3);
   if (mode === 'recall' || others.length < 3) {
-    return { ...base, kind: 'type', prompt: 'Hoe zeg je dit in het Nederlands?', subFa: v.fa, sub: v.en ? `(${v.en})` : '', answers: [v.nl, ...(v.alt || [])], why: v.ex };
+    return { ...base, kind: 'type', prompt: 'Hoe zeg je dit in het Nederlands?', subEn: v.en, answers: [v.nl, ...(v.alt || [])], why: v.ex };
   }
   if (mode === 'cloze' && v.ex && v.ex.toLowerCase().includes(v.nl.toLowerCase())) {
     const i = v.ex.toLowerCase().indexOf(v.nl.toLowerCase());
@@ -72,7 +72,7 @@ export function vocabExercise(v, pool, mode, rand = Math.random) {
     return { ...base, kind: 'choice', prompt: 'Welke uitdrukking past?', sub: v.ex.slice(0, i) + '_____' + v.ex.slice(i + v.nl.length), options: options.map((o) => o.nl), answer: options.indexOf(v) };
   }
   const options = shuffle([v, ...others], rand);
-  return { ...base, kind: 'choice', prompt: 'Wat betekent dit?', sub: v.nl, optionsFa: true, options: options.map((o) => o.fa), answer: options.indexOf(v), why: v.ex };
+  return { ...base, kind: 'choice', prompt: 'Wat betekent dit?', sub: v.nl, optionsEn: true, options: options.map((o) => o.en), answer: options.indexOf(v), why: v.ex };
 }
 
 /** Grade an answer. `given` is an option index (choice), an array of chunks (order) or text (type). */

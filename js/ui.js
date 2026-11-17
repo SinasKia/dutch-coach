@@ -20,7 +20,8 @@ export function append(el, ...kids) {
   return el;
 }
 export const clear = (el) => { el.replaceChildren(); return el; };
-export const fa = (text, cls = '') => h('span', { class: `fa ${cls}`, dir: 'rtl', lang: 'fa' }, text);
+/** English help text (meanings, optional explanations). */
+export const en = (text, cls = '') => h('span', { class: `en ${cls}`, lang: 'en' }, text);
 
 const ICONS = {
   today: 'M12 3v2m0 14v2m9-9h-2M5 12H3m14.7-5.7-1.4 1.4M7.7 16.3l-1.4 1.4m0-11.4 1.4 1.4m8.6 8.6 1.4 1.4M12 8a4 4 0 100 8 4 4 0 000-8z',

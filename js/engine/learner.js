@@ -83,11 +83,11 @@ export function stageFromLevels(levels) {
 
 /* ---------- Stages: observable performance criteria ---------- */
 export const STAGES = [
-  { n: 1, title: 'Fundament herstellen', fa: 'ترمیم پایه‌ها', goal: 'Basisfouten opsporen en repareren; bestaande kennis activeren.', skills: ['mainorder', 'inversion', 'conjugation', 'perfect'], conv: 3 },
-  { n: 2, title: 'Zelfstandig in gesprekken', fa: 'استقلال در گفت‌وگو', goal: 'Dagelijkse situaties aankunnen en een spontaan gesprek gaande houden.', skills: ['subclause', 'modal', 'separable', 'prepositions'], conv: 6, listen: [0.7, 9] },
-  { n: 3, title: 'Langer spreken', fa: 'صحبت طولانی‌تر', goal: 'Ervaringen uitleggen, beschrijven, verhalen vertellen en vergelijken.', skills: ['past', 'connectors', 'relative'], conv: 9, avgWords: 25, connectors: 4 },
-  { n: 4, title: 'Argumenten en meningen', fa: 'استدلال و نظر', goal: 'Genuanceerde meningen geven, beleefd tegenspreken, argumenten verbinden.', skills: ['conditional', 'passive', 'omte'], discussions: 4, avgWords: 40, connectors: 6 },
-  { n: 5, title: 'B2-simulatie', fa: 'شبیه‌سازی B2', goal: 'Complexe gesprekken, langere luistertaken en gestructureerde spreekopdrachten.', skills: [], discussions: 8, avgWords: 55, connectors: 8, listen: [0.7, 9, 'B2'] },
+  { n: 1, title: 'Fundament herstellen', goal: 'Basisfouten opsporen en repareren; bestaande kennis activeren.', skills: ['mainorder', 'inversion', 'conjugation', 'perfect'], conv: 3 },
+  { n: 2, title: 'Zelfstandig in gesprekken', goal: 'Dagelijkse situaties aankunnen en een spontaan gesprek gaande houden.', skills: ['subclause', 'modal', 'separable', 'prepositions'], conv: 6, listen: [0.7, 9] },
+  { n: 3, title: 'Langer spreken', goal: 'Ervaringen uitleggen, beschrijven, verhalen vertellen en vergelijken.', skills: ['past', 'connectors', 'relative'], conv: 9, avgWords: 25, connectors: 4 },
+  { n: 4, title: 'Argumenten en meningen', goal: 'Genuanceerde meningen geven, beleefd tegenspreken, argumenten verbinden.', skills: ['conditional', 'passive', 'omte'], discussions: 4, avgWords: 40, connectors: 6 },
+  { n: 5, title: 'B2-simulatie', goal: 'Complexe gesprekken, langere luistertaken en gestructureerde spreekopdrachten.', skills: [], discussions: 8, avgWords: 55, connectors: 8, listen: [0.7, 9, 'B2'] },
 ];
 
 export function conversationStats(log) {

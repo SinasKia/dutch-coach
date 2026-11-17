@@ -1,12 +1,12 @@
 {
-"format": "dutch-coach-pack", "formatVersion": 1, "id": "core-grammar", "version": "1.0.0",
+"format": "dutch-coach-pack", "formatVersion": 1, "id": "core-grammar", "version": "1.1.0",
 "title": "Grammatica in context (A2–B2)",
 "description": "Korte, gerichte lessen: voorbeeld, uitleg, typische fouten, oefenen, zelf produceren.",
 "grammar": [
 {"id":"g-mainorder","title":"Het werkwoord op plaats twee","cefr":"A2","stage":1,"skill":"mainorder",
  "example":"Ik drink ’s ochtends altijd koffie.",
  "explain":"In een hoofdzin staat het vervoegde werkwoord altijd op de tweede plaats. Een tweede werkwoord (infinitief of voltooid deelwoord) gaat naar het einde.",
- "explainFa":"در جمله‌ی اصلی، فعلِ صرف‌شده همیشه در جایگاه دوم است (برخلاف فارسی که فعل آخر می‌آید). فعل دوم (مصدر یا اسم مفعول) به انتهای جمله می‌رود.",
+ "explainEn":"In a main clause the conjugated verb is always in second position. A second verb (infinitive or past participle) goes to the end.",
  "mistakes":[{"wrong":"Ik altijd drink koffie.","right":"Ik drink altijd koffie.","why":"Het werkwoord komt direct na het eerste zinsdeel."},{"wrong":"Ik wil maken een afspraak.","right":"Ik wil een afspraak maken.","why":"De infinitief staat achteraan."}],
  "items":[
   {"t":"order","chunks":["Ik","werk","vandaag","thuis"]},
@@ -23,7 +23,7 @@
 {"id":"g-inversion","title":"Inversie: werkwoord vóór het onderwerp","cefr":"A2","stage":1,"skill":"inversion",
  "example":"Morgen ga ik naar de markt.",
  "explain":"Begint de zin niet met het onderwerp (maar met tijd, plaats, ‘daarom’, ‘misschien’ …)? Dan blijft het werkwoord op plaats twee en komt het onderwerp erna.",
- "explainFa":"اگر جمله با چیزی غیر از فاعل شروع شود (زمان، مکان، daarom، misschien …)، فعل در جایگاه دوم می‌ماند و فاعل بعد از فعل می‌آید. این رایج‌ترین خطای فارسی‌زبانان و انگلیسی‌زبانان است.",
+ "explainEn":"If the sentence does not start with the subject (but with a time, place, daarom, misschien …), the verb stays in position two and the subject comes right after it. This is one of the most common mistakes.",
  "mistakes":[{"wrong":"Morgen ik ga naar de markt.","right":"Morgen ga ik naar de markt.","why":"Na ‘morgen’ komt eerst het werkwoord."},{"wrong":"Misschien ik kom later.","right":"Misschien kom ik later.","why":"Ook na ‘misschien’ is er inversie."}],
  "items":[
   {"t":"invert","s":"ik","v":"ga","rest":"naar de markt","fronts":["Morgen","Vanmiddag","Straks"]},
@@ -41,7 +41,7 @@
 {"id":"g-conjugation","title":"Vervoeging in de tegenwoordige tijd","cefr":"A2","stage":1,"skill":"conjugation",
  "example":"Jij spreekt goed Nederlands. — Spreek jij ook Engels?",
  "explain":"ik: stam · jij/u/hij/zij: stam + t · wij/jullie/zij: infinitief. Staat ‘jij/je’ achter het werkwoord, dan vervalt de -t.",
- "explainFa":"ik = ریشه؛ jij/u/hij/zij = ریشه + t؛ جمع = مصدر. اگر jij/je بعد از فعل بیاید (در سؤال یا وارونگی)، t حذف می‌شود: jij werkt ← werk jij?",
+ "explainEn":"ik = stem; jij/u/hij/zij = stem + t; plural = infinitive. When jij/je comes after the verb (question or inversion), the -t drops: jij werkt → werk jij?",
  "mistakes":[{"wrong":"Werkt jij morgen?","right":"Werk jij morgen?","why":"Geen -t als ‘jij’ achter het werkwoord staat."},{"wrong":"Hij woon in Utrecht.","right":"Hij woont in Utrecht.","why":"hij/zij/het: stam + t."}],
  "items":[
   {"t":"fill","q":"Jij ___ heel goed Nederlands. (spreken)","a":["spreekt"]},
@@ -59,7 +59,7 @@
 {"id":"g-perfect","title":"Voltooide tijd: hebben of zijn + deelwoord","cefr":"A2","stage":1,"skill":"perfect",
  "example":"Ik heb gisteren thuis gewerkt. We zijn naar Rotterdam gegaan.",
  "explain":"Hulpwerkwoord op plaats twee, voltooid deelwoord achteraan. De meeste werkwoorden krijgen ‘hebben’. ‘Zijn’ bij beweging naar een bestemming of verandering (gaan, komen, blijven, zijn, worden, gebeuren, beginnen).",
- "explainFa":"فعل کمکی در جایگاه دوم و اسم مفعول در انتهای جمله. بیشتر فعل‌ها با hebben می‌آیند؛ فعل‌های حرکت به‌سوی مقصد و تغییر حالت (gaan، komen، blijven، zijn، worden، gebeuren) با zijn.",
+ "explainEn":"Auxiliary in position two, past participle at the end. Most verbs take hebben; verbs of movement to a destination and change of state (gaan, komen, blijven, zijn, worden, gebeuren) take zijn.",
  "mistakes":[{"wrong":"Ik heb naar huis gegaan.","right":"Ik ben naar huis gegaan.","why":"‘gaan’ krijgt zijn."},{"wrong":"Ik heb gewerkt gisteren thuis.","right":"Ik heb gisteren thuis gewerkt.","why":"Het deelwoord staat achteraan."}],
  "items":[
   {"t":"perf","s":"Ik","aux":"heb","pp":"gewerkt","inf":"werken","rest":"gisteren thuis"},
@@ -78,7 +78,7 @@
 {"id":"g-dehet","title":"De of het","cefr":"A2","stage":1,"skill":"dehet",
  "example":"de afspraak · het huis · het meisje · de huizen",
  "explain":"Er is geen volledige regel; leer het lidwoord met het woord. Vaste hulp: verkleinwoorden (-je) zijn het-woorden, meervoud is altijd de, woorden op -ing/-heid/-tie zijn de-woorden.",
- "explainFa":"قاعده‌ی کاملی وجود ندارد؛ حرف تعریف را همراه با خودِ واژه یاد بگیر. چند کمک ثابت: واژه‌های تصغیر (-je) همیشه het، جمع همیشه de، و واژه‌های مختوم به -ing / -heid / -tie همیشه de هستند.",
+ "explainEn":"There is no complete rule: learn the article together with the word. Fixed help: diminutives (-je) are always het, plurals are always de, words ending in -ing / -heid / -tie are de.",
  "mistakes":[{"wrong":"de huis","right":"het huis","why":"‘huis’ is een het-woord."},{"wrong":"een mooie huis","right":"een mooi huis","why":"een + het-woord: bijvoeglijk naamwoord zonder -e."}],
  "items":[
   {"t":"choice","q":"Ik heb ___ boek al gelezen.","options":["de","het"],"a":1},
@@ -97,7 +97,7 @@
 {"id":"g-subclause","title":"Bijzin: het werkwoord gaat naar het einde","cefr":"B1","stage":2,"skill":"subclause",
  "example":"Ik blijf thuis omdat ik ziek ben.",
  "explain":"Na omdat, dat, als, wanneer, hoewel, terwijl, zodat, of … staat het vervoegde werkwoord aan het einde van de bijzin. Let op: na ‘want’, ‘maar’, ‘en’, ‘dus’ blijft de gewone hoofdzinvolgorde.",
- "explainFa":"بعد از omdat، dat، als، wanneer، hoewel، terwijl، zodat، of … فعلِ صرف‌شده به انتهای جمله‌واره می‌رود (شبیه فارسی!). ولی بعد از want، maar، en، dus ترتیب جمله‌ی اصلی حفظ می‌شود.",
+ "explainEn":"After omdat, dat, als, wanneer, hoewel, terwijl, zodat, of … the conjugated verb goes to the end of the clause. After want, maar, en, dus the normal main-clause order stays.",
  "mistakes":[{"wrong":"… omdat ik ben ziek.","right":"… omdat ik ziek ben.","why":"In de bijzin staat het werkwoord achteraan."},{"wrong":"… want ik ziek ben.","right":"… want ik ben ziek.","why":"‘want’ verbindt twee hoofdzinnen."}],
  "items":[
   {"t":"sub","main":"Ik blijf thuis","s":"ik","v":"ben","mid":"ziek","conj":["omdat"]},
@@ -117,7 +117,7 @@
 {"id":"g-modal","title":"Modale werkwoorden: kunnen, moeten, mogen, willen, zullen","cefr":"A2","stage":2,"skill":"modal",
  "example":"Ik moet morgen vroeg opstaan. Je hoeft niet te komen.",
  "explain":"Het modale werkwoord staat op plaats twee, de infinitief achteraan (zonder ‘te’). Geen verplichting = ‘niet hoeven te’. Beleefd vragen: ‘zou … kunnen/willen’.",
- "explainFa":"فعل وجهی در جایگاه دوم و مصدر (بدون te) در انتها. «لازم نیست» = niet hoeven te (نه niet moeten). برای درخواست مؤدبانه: zou … kunnen / willen.",
+ "explainEn":"The modal verb is in position two, the infinitive at the end (without te). \"Don't have to\" = niet hoeven te (not niet moeten). Polite requests: zou … kunnen / willen.",
  "mistakes":[{"wrong":"Je moet niet komen. (= het is niet nodig)","right":"Je hoeft niet te komen.","why":"Geen verplichting → niet hoeven te."},{"wrong":"Ik wil te gaan.","right":"Ik wil gaan.","why":"Na een modaal werkwoord geen ‘te’."}],
  "items":[
   {"t":"order","chunks":["Ik","moet","morgen","vroeg","opstaan"]},
@@ -135,7 +135,7 @@
 {"id":"g-separable","title":"Scheidbare werkwoorden","cefr":"B1","stage":2,"skill":"separable",
  "example":"Ik bel mijn moeder op. — Ik heb haar opgebeld. — Ik probeer haar op te bellen.",
  "explain":"In de hoofdzin gaat het voorvoegsel naar het einde. Deelwoord: op-ge-beld. Met te: op te bellen. In de bijzin blijft het werkwoord aan elkaar: … dat ik haar opbel.",
- "explainFa":"در جمله‌ی اصلی، پیشوند جدا می‌شود و به آخر جمله می‌رود. اسم مفعول: op-ge-beld. با te: op te bellen. در جمله‌واره‌ی پیرو فعل سرِ هم می‌ماند: dat ik haar opbel.",
+ "explainEn":"In a main clause the prefix splits off and goes to the end. Past participle: op-ge-beld. With te: op te bellen. In a subordinate clause the verb stays together: dat ik haar opbel.",
  "mistakes":[{"wrong":"Ik opbel mijn moeder.","right":"Ik bel mijn moeder op.","why":"Het voorvoegsel gaat naar het einde."},{"wrong":"Ik heb geopbeld.","right":"Ik heb opgebeld.","why":"‘ge’ komt tussen voorvoegsel en stam."}],
  "items":[
   {"t":"sep","s":"Ik","inf":"opbellen","v":"bel","prefix":"op","rest":"mijn moeder"},
@@ -153,7 +153,7 @@
 {"id":"g-prepositions","title":"Werkwoorden met een vast voorzetsel","cefr":"B1","stage":2,"skill":"prepositions",
  "example":"Ik wacht op de bus. Ze denkt aan haar familie.",
  "explain":"Veel werkwoorden en bijvoeglijke naamwoorden hebben een vast voorzetsel dat je niet kunt vertalen. Leer ze als één geheel: wachten op, denken aan, houden van, luisteren naar.",
- "explainFa":"بسیاری از فعل‌ها و صفت‌ها حرف اضافه‌ی ثابتی دارند که قابل ترجمه‌ی مستقیم از فارسی یا انگلیسی نیست. آن‌ها را به‌صورت یک واحد یاد بگیر: wachten op، denken aan، houden van، luisteren naar.",
+ "explainEn":"Many verbs and adjectives have a fixed preposition that you cannot translate word for word. Learn them as one unit: wachten op, denken aan, houden van, luisteren naar.",
  "mistakes":[{"wrong":"Ik wacht voor de bus.","right":"Ik wacht op de bus.","why":"wachten op (Engels: wait for)."},{"wrong":"Ik luister muziek.","right":"Ik luister naar muziek.","why":"luisteren naar."}],
  "items":[
   {"t":"fill","q":"Ik wacht ___ de bus.","a":["op"]},
@@ -173,7 +173,7 @@
 {"id":"g-past","title":"Verleden tijd (imperfectum) voor verhalen","cefr":"B1","stage":3,"skill":"past",
  "example":"Vroeger woonde ik in Teheran. Toen ik aankwam, sprak ik geen Nederlands.",
  "explain":"Voor beschrijvingen, gewoontes en verhalen in het verleden. Regelmatig: stam + te(n) na t, k, f, s, ch, p (’t kofschip), anders + de(n). Sterke werkwoorden veranderen van klinker: gaan–ging, komen–kwam, zijn–was.",
- "explainFa":"برای توصیف، عادت‌ها و روایت در گذشته. باقاعده: ریشه + te(n) اگر ریشه به t، k، f، s، ch، p ختم شود (قاعده‌ی ’t kofschip)، وگرنه + de(n). فعل‌های قوی واکه عوض می‌کنند: gaan–ging، komen–kwam، zijn–was.",
+ "explainEn":"For descriptions, habits and stories in the past. Regular: stem + te(n) if the stem ends in t, k, f, s, ch, p (the 't kofschip rule), otherwise + de(n). Strong verbs change their vowel: gaan–ging, komen–kwam, zijn–was.",
  "mistakes":[{"wrong":"Toen ik klein ben, …","right":"Toen ik klein was, …","why":"Na ‘toen’ (verleden) gebruik je de verleden tijd."},{"wrong":"Ik wachtde.","right":"Ik wachtte.","why":"Stam eindigt op t → + te."}],
  "items":[
   {"t":"fill","q":"Vroeger ___ ik in Teheran. (wonen)","a":["woonde"]},
@@ -192,7 +192,7 @@
 {"id":"g-connectors","title":"Ideeën verbinden: want, omdat, dus, daarom, hoewel, toen","cefr":"B1","stage":3,"skill":"connectors",
  "example":"Ik was moe, dus ik ging vroeg naar bed. Daarom heb ik je niet gebeld.",
  "explain":"Drie groepen met elk een eigen woordvolgorde: (1) want, maar, en, dus → gewone hoofdzin; (2) daarom, daarna, toch, bovendien → inversie; (3) omdat, hoewel, terwijl, toen, als → werkwoord achteraan.",
- "explainFa":"سه گروه با سه ترتیب واژه‌ی متفاوت: (۱) want، maar، en، dus ← جمله‌ی اصلیِ معمولی؛ (۲) daarom، daarna، toch، bovendien ← وارونگی (فعل قبل از فاعل)؛ (۳) omdat، hoewel، terwijl، toen، als ← فعل در آخر.",
+ "explainEn":"Three groups with three word orders: (1) want, maar, en, dus → normal main clause; (2) daarom, daarna, toch, bovendien → inversion (verb before subject); (3) omdat, hoewel, terwijl, toen, als → verb at the end.",
  "mistakes":[{"wrong":"Daarom ik blijf thuis.","right":"Daarom blijf ik thuis.","why":"‘daarom’ is een bijwoord: inversie."},{"wrong":"Als ik thuiskwam, ging de telefoon. (één keer)","right":"Toen ik thuiskwam, ging de telefoon.","why":"Eén moment in het verleden → toen."}],
  "items":[
   {"t":"choice","q":"Ik was moe, ___ ik ben vroeg naar bed gegaan.","options":["dus","omdat","hoewel"],"a":0},
@@ -211,7 +211,7 @@
 {"id":"g-relative","title":"Betrekkelijke bijzin: die, dat, wat, waar…","cefr":"B1","stage":3,"skill":"relative",
  "example":"De man die daar staat, is mijn buurman. Het boek dat ik lees, is spannend.",
  "explain":"de-woorden en meervoud → die; het-woorden (enkelvoud) → dat. Na alles/iets/niets → wat. Met een voorzetsel: personen ‘met wie’, dingen ‘waarmee/waarin/waarover’. Het werkwoord staat achteraan.",
- "explainFa":"برای واژه‌های de و جمع ← die؛ برای واژه‌های het مفرد ← dat. بعد از alles / iets / niets ← wat. با حرف اضافه: برای اشخاص met wie، برای اشیا waarmee / waarin / waarover. فعل در انتهای جمله‌واره می‌آید.",
+ "explainEn":"de-words and plurals → die; singular het-words → dat. After alles / iets / niets → wat. With a preposition: people met wie, things waarmee / waarin / waarover. The verb goes to the end of the clause.",
  "mistakes":[{"wrong":"Het boek die ik lees …","right":"Het boek dat ik lees …","why":"het-woord → dat."},{"wrong":"De film die ik heb gezien gisteren …","right":"De film die ik gisteren heb gezien …","why":"Werkwoorden aan het einde van de bijzin."}],
  "items":[
   {"t":"choice","q":"De man ___ daar staat, is mijn buurman.","options":["die","dat","wat"],"a":0},
@@ -228,7 +228,7 @@
 {"id":"g-er","title":"Het woordje ‘er’","cefr":"B1","stage":3,"skill":"er",
  "example":"Er staat een man voor de deur. Ik heb er twee. Ik denk er vaak aan.",
  "explain":"Vier functies: (1) er is/staat/ligt + onbepaald onderwerp; (2) plaats = daar (onbeklemtoond); (3) met een getal: ik heb er twee; (4) met een voorzetsel in plaats van ‘het’: eraan, erover, ervan, erin.",
- "explainFa":"چهار کاربرد: (۱) er is / staat / ligt با فاعلِ نکره؛ (۲) مکان = «آن‌جا» (بدون تأکید)؛ (۳) با عدد: ik heb er twee؛ (۴) همراه با حرف اضافه به‌جای het: eraan، erover، ervan، erin.",
+ "explainEn":"Four uses: (1) er is / staat / ligt with an indefinite subject; (2) place = \"there\" (unstressed); (3) with a number: ik heb er twee; (4) with a preposition instead of het: eraan, erover, ervan, erin.",
  "mistakes":[{"wrong":"Ik denk vaak aan het.","right":"Ik denk er vaak aan.","why":"voorzetsel + het → er + voorzetsel."},{"wrong":"Ik heb twee. (kinderen)","right":"Ik heb er twee.","why":"Bij een getal zonder zelfstandig naamwoord hoort ‘er’."}],
  "items":[
   {"t":"choice","q":"___ staat een man voor de deur.","options":["Er","Het","Hij"],"a":0},
@@ -244,7 +244,7 @@
 {"id":"g-omte","title":"Om … te + infinitief","cefr":"B1","stage":4,"skill":"omte",
  "example":"Ik ga naar de markt om groente te kopen.",
  "explain":"‘om … te’ geeft een doel aan. ‘te’ staat direct voor de infinitief; bij scheidbare werkwoorden ertussen: om uit te gaan. Na ‘proberen’, ‘beginnen’, ‘vergeten’ alleen ‘te’.",
- "explainFa":"om … te هدف را نشان می‌دهد («برای این‌که»). te درست قبل از مصدر می‌آید؛ در فعل‌های جداشدنی وسطِ فعل: om uit te gaan. بعد از proberen، beginnen، vergeten فقط te می‌آید.",
+ "explainEn":"om … te expresses a purpose (\"in order to\"). te comes directly before the infinitive; with separable verbs it goes in the middle: om uit te gaan. After proberen, beginnen, vergeten use only te.",
  "mistakes":[{"wrong":"Ik bel voor een afspraak maken.","right":"Ik bel om een afspraak te maken.","why":"Doel met werkwoord → om … te."},{"wrong":"om te uitgaan","right":"om uit te gaan","why":"‘te’ tussen voorvoegsel en werkwoord."}],
  "items":[
   {"t":"order","chunks":["Ik","ga","naar de markt","om","groente","te kopen"]},
@@ -260,7 +260,7 @@
 {"id":"g-conditional","title":"Zou en als: wensen, advies, hypothese","cefr":"B2","stage":4,"skill":"conditional",
  "example":"Als ik meer tijd had, zou ik vaker sporten.",
  "explain":"Onwerkelijke voorwaarde: als + verleden tijd, zou + infinitief. Advies: ‘Als ik jou was, zou ik …’. Beleefd: ‘Zou u … kunnen?’. Reële voorwaarde: als + tegenwoordige tijd in beide delen.",
- "explainFa":"شرطِ غیرواقعی: als + گذشته‌ی ساده، سپس zou + مصدر. توصیه: Als ik jou was, zou ik …. مؤدبانه: Zou u … kunnen?. شرطِ واقعی: als + زمان حال در هر دو بخش.",
+ "explainEn":"Unreal condition: als + simple past, then zou + infinitive. Advice: Als ik jou was, zou ik …. Polite: Zou u … kunnen?. Real condition: als + present tense in both parts.",
  "mistakes":[{"wrong":"Als ik zou meer tijd hebben, …","right":"Als ik meer tijd had, …","why":"In de als-zin liever verleden tijd, werkwoord achteraan."},{"wrong":"Als ik rijk was, ik zou een huis kopen.","right":"Als ik rijk was, zou ik een huis kopen.","why":"Na de bijzin: inversie in de hoofdzin."}],
  "items":[
   {"t":"choice","q":"Als ik meer tijd had, ___ ik vaker sporten.","options":["zou","zal","had"],"a":0},
@@ -277,7 +277,7 @@
 {"id":"g-passive","title":"Passief: worden en zijn + deelwoord","cefr":"B2","stage":4,"skill":"passive",
  "example":"Het pakket wordt morgen bezorgd. De brief is al verstuurd.",
  "explain":"Gebruik het passief als niet belangrijk is wie iets doet. Nu/algemeen: wordt + deelwoord. Verleden: werd + deelwoord. Afgerond: is + deelwoord. Zonder onderwerp: ‘Er wordt …’.",
- "explainFa":"وقتی مهم نیست چه کسی کار را انجام می‌دهد از مجهول استفاده کن. حال / کلی: wordt + اسم مفعول. گذشته: werd + اسم مفعول. کارِ تمام‌شده: is + اسم مفعول. بدون فاعل: Er wordt ….",
+ "explainEn":"Use the passive when it does not matter who does something. Present / general: wordt + participle. Past: werd + participle. Completed: is + participle. Without a subject: Er wordt ….",
  "mistakes":[{"wrong":"Het pakket is morgen bezorgd.","right":"Het pakket wordt morgen bezorgd.","why":"Toekomst/proces → worden."},{"wrong":"De brief is verstuurd geworden.","right":"De brief is verstuurd.","why":"‘geworden’ vervalt in het voltooide passief."}],
  "items":[
   {"t":"choice","q":"Het pakket ___ morgen bezorgd.","options":["wordt","is","heeft"],"a":0},
