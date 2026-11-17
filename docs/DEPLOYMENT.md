@@ -28,7 +28,7 @@ Create a project, choose "upload a folder" (or connect the repository), no build
 1. Change files.
 2. Bump `VERSION` in `sw.js` (for code) and/or the pack `version` plus `content/index.json` (for content).
 3. `npm test && npm run validate`.
-4. Upload. Phones pick up the new version on the next launch while online; the app shows a notice.
+4. Upload. For the live site (https://sinaskia.github.io/dutch-coach/, repository `SinasKia/dutch-coach`, Pages from `main` / root): `git add -A && git commit -m "…" && git push`. Pages redeploys within about a minute. Phones pick up the new version on the next launch while online; the app shows a notice.
 
 ## API configuration
 
